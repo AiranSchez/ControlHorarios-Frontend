@@ -1,3 +1,11 @@
+# Tecnologías provisionales
+
+- Sass
+- Postcss
+- Vuejs
+- Parcel
+- Stylelint
+
 # Mockup provisional de la página de usuario
 
 ![alt text](https://i.imgur.com/dNiUrKb.png)
