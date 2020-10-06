@@ -1,11 +1,3 @@
-# Tecnologías provisionales
-
-- Sass
-- Postcss
-- Vuejs
-- Parcel
-- Stylelint
-
 # Mockup provisional de la página de usuario
 
 ![alt text](https://i.imgur.com/dNiUrKb.png)
@@ -17,3 +9,15 @@
 # Mockup provisional de la página principal de admin (Vista de proyecto)
 
 ![alt text](https://i.imgur.com/XtqAi1m.png)
+
+# Trabajo en desarrollo
+
+## Tecnologías utilizadas
+
+### Provisional
+
+- Sass
+- Postcss
+- Vuejs
+- Parcel
+- Stylelint
