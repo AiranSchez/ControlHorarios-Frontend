@@ -6,7 +6,7 @@ ENTRYPOINT ["bash", "./run.sh"]
 
 FROM nginx:1.19.3
 WORKDIR /app
-COPY . /app
+COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon  off;"]
