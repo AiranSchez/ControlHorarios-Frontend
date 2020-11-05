@@ -1,7 +1,5 @@
 name: 'Deploy'
 
-description: ''
-
 on: push
 
 jobs:
