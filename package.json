@@ -12,7 +12,7 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
-    "stylelint" : "stylelint ./src/css/*.scss"
+    "stylelint": "stylelint ./src/css/*.scss"
   },
   "keywords": [],
   "license": "ISC",
