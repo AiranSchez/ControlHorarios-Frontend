@@ -3,7 +3,6 @@ WORKDIR /app
 COPY . /app
 RUN apt-get update && npm install
 RUN npm run build
-#ENTRYPOINT ["bash", "./run.sh"]
 
 FROM nginx:1.19.3
 WORKDIR /app
