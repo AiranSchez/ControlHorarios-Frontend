@@ -6,18 +6,18 @@ module.exports = {
         /-(leave|enter|appear)(|-(to|from|active))$/,
         /^(?!(|.*?:)cursor-move).+-move$/,
         /^router-link(|-exact)-active$/
-      ],
-    },
+      ]
+    }
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {}
   },
   variants: {
-    extend: {},
+    extend: {}
   },
   plugins: [
-    require("tailwindcss")("./tailwind.config.js"),
-    require("autoprefixer")
-  ],
+    require('tailwindcss')('./tailwind.config.js'),
+    require('autoprefixer')
+  ]
 }
