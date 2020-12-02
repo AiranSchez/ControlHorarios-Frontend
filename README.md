@@ -1,29 +1,36 @@
-# prueba
+# Mockups
 
-## Project setup
-```
-npm install
-```
+## Mockup provisional de la página principal
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+![Mockup página principal](https://i.imgur.com/T7Fih01.png)
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Mockup provisional de la página de usuario
 
-### Run your unit tests
-```
-npm run test:unit
-```
+![Mockup perfil usuario](https://i.imgur.com/KHI9dty.png)
+![Mockup perfil usuario](https://i.imgur.com/lJa6su5.png)
+![Mockup perfil usuario](https://i.imgur.com/R7aSRTY.png)
 
-### Lints and fixes files
-```
-npm run lint
-```
+## Mockup provisional de la página principal de admin
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![Mockup perfil admin](https://i.imgur.com/zISk6Id.png)
+
+## Mockup provisional de la página de registro de empresa
+
+![Mockup perfil del registro](https://i.imgur.com/uA0jblN.png)
+
+## Mockup provisional de la página de login empres/empleado
+
+![Mockup perfil del registro](https://i.imgur.com/fvUWBWH.png)
+
+
+# Trabajo en desarrollo
+
+## Tecnologías utilizadas
+
+### Provisional
+
+- Vuejs
+- Parcel
+- Stylelint
+- Eslint
+- Tailwind
