@@ -1,10 +1,10 @@
 <template>
-  <div class="about flex flex-col justify-between h-screen">
+  <div id="register" class="flex flex-col justify-between h-screen">
     <Header/>
-    <h1>This is an about page</h1>
+    <div>Página de Registro</div>
     <Footer/>
   </div>
-</template>.
+</template>
 
 <script>
 import Header from '../components/Header'
@@ -17,3 +17,7 @@ export default {
   }
 }
 </script>
+
+<style>
+
+</style>
