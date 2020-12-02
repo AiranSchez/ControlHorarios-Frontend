@@ -1,24 +1,27 @@
 # Mockups
 
+## Mockup provisional de la página principal
+
+![Mockup página principal](https://i.imgur.com/T7Fih01.png)
+
 ## Mockup provisional de la página de usuario
 
-![Mockup perfil usuario](https://i.imgur.com/dNiUrKb.png)
+![Mockup perfil usuario](https://i.imgur.com/KHI9dty.png)
+![Mockup perfil usuario](https://i.imgur.com/lJa6su5.png)
+![Mockup perfil usuario](https://i.imgur.com/R7aSRTY.png)
 
 ## Mockup provisional de la página principal de admin
 
-![Mockup perfil admin](https://i.imgur.com/Y1XH2eK.png)
+![Mockup perfil admin](https://i.imgur.com/zISk6Id.png)
 
-## Mockup provisional de la página principal de admin (Vista de proyecto)
+## Mockup provisional de la página de registro de empresa
 
-![Mockup perfil del admin](https://i.imgur.com/XtqAi1m.png)
+![Mockup perfil del registro](https://i.imgur.com/uA0jblN.png)
 
-## Mockup provisional de la página de registro
+## Mockup provisional de la página de login empres/empleado
 
-![Mockup perfil del registro](https://i.imgur.com/6XkkmM4.png)
+![Mockup perfil del registro](https://i.imgur.com/fvUWBWH.png)
 
-## Mockup provisional de la página principal
-
-![Mockup página principal](https://i.imgur.com/Ohmos36.png)
 
 # Trabajo en desarrollo
 
@@ -26,8 +29,8 @@
 
 ### Provisional
 
-- Sass
-- Postcss
 - Vuejs
 - Parcel
 - Stylelint
+- Eslint
+- Tailwind
