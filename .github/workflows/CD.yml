@@ -3,7 +3,7 @@ name: CD
 on:
   push:
     branches:
-      - main
+      - dev
 
 jobs:    
   build-docker:
@@ -45,8 +45,8 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: | 
-            docker stop flipday-front
-            docker rm flipday-front
+            docker container stop flipday-front
+            docker container rm flipday-front
             docker rmi flipday/frontend
-            docker run -d -p 80:80 --name flipday-front flipday/frontend
+            docker run -d -p 8081:80 --name flipday-front flipday/frontend
     
