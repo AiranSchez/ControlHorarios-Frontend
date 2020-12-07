@@ -50,5 +50,6 @@ export default {
     getName () {
       getEmployeeData().then(resp => { this.name = resp })
     }
+  }
 }
 </script>
