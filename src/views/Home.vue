@@ -32,22 +32,23 @@
     <div @click="getName()">Haz click aqui {{ name }}</div>
   </div>
 </template>
-
 <script>
+
 import { getEmployeeData } from '@/domain/services/employeeServices'
+import Member from '../components/MemberCard/Member'
 export default {
   name: 'Home',
-  components: {},
+  components: {
+    Member
+    },
   data () {
     return {
       name: '',
-      nombre: ''
     }
   },
   methods: {
     getName () {
       getEmployeeData().then(resp => { this.name = resp })
     }
-  }
 }
 </script>
