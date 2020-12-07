@@ -30,6 +30,7 @@
     </div>
     <img src="../assets/Home-picture-3.jpg" alt="Meeting Picture" />
     <div @click="getName()">Haz click aqui {{ name }}</div>
+    <Member/>
   </div>
 </template>
 <script>
@@ -40,10 +41,10 @@ export default {
   name: 'Home',
   components: {
     Member
-    },
+  },
   data () {
     return {
-      name: '',
+      name: ''
     }
   },
   methods: {
