@@ -20,7 +20,7 @@
         </div>
       </div>
     </div>
-    <div class="bg-black text-white text-center">©Copyright all rights reserved to Flipday team</div>
+    <div class="bg-black text-white text-center">©Copyright all rights reserved to Flipday Team</div>
   </div>
 </template>
 

@@ -19,13 +19,16 @@
       <img src="../assets/Home-icon-2.png" alt="Chronometer icon" class="w-20 h-20 ">
     </div>
     <img src="../assets/Home-picture-3.jpg" alt="Meeting Picture"/>
+   <Member/>
   </div>
 </template>
 
 <script>
+import Member from '../components/MemberCard/Member'
 export default {
   name: 'Home',
   components: {
+    Member
   }
 }
 </script>
