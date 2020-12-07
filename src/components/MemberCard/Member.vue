@@ -2,7 +2,7 @@
   <div>
     <div class="flex">
       <figure class="md:flex bg-gray-100 rounded-xl p-8 md:p-0 w-3/5 m-3">
-          <MemberAvatar/>
+          <MemberAvatar picture="Avatar-picture-1.jpg"/>
         <div class="pt-6 md:p-8 text-center space-y-4">
           <Blockquote value="La salud es lo importante"/>
           <MemberNameRol name="Ari" rol="puto amo"/>
@@ -15,12 +15,12 @@
           <Blockquote value="La salud es lo importante"/>
           <MemberNameRol name="Airan" rol="puto amo"/>
         </div>
-          <MemberAvatar/>
+          <MemberAvatar picture="Avatar-picture-1.jpg"/>
       </figure>
     </div>
      <div class="flex">
       <figure class="flex bg-gray-100 rounded-xl p-8 md:p-0 w-3/5 m-3">
-       <MemberAvatar/>
+       <MemberAvatar picture="Avatar-picture-1.jpg"/>
         <div class="pt-6 md:p-8 text-center space-y-4">
           <Blockquote value="La salud es lo importante"/>
           <MemberNameRol name="Jaime" rol="puto amo"/>
@@ -33,7 +33,7 @@
           <Blockquote value="La salud es lo importante"/>
           <MemberNameRol name="Manu" rol="puto amo"/>
         </div>
-          <MemberAvatar/>
+          <MemberAvatar picture="Avatar-picture-1.jpg"/>
       </figure>
     </div>
   </div>
