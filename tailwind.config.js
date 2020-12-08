@@ -10,11 +10,15 @@ module.exports = {
     }
   },
   darkMode: false, // or 'media' or 'class'
-  theme: {
-    extend: {}
-  },
   variants: {
     extend: {}
+  },
+  theme: {
+    extend: {
+      colors: {
+        'regal-blue': '#22223B',
+      }
+    }
   },
   plugins: [
     require('tailwindcss')('./tailwind.config.js'),
