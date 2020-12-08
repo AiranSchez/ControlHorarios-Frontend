@@ -16,6 +16,13 @@ module.exports = {
   variants: {
     extend: {}
   },
+  theme: {
+    extend: {
+      colors: {
+        'regal-blue': '#22223B',
+      }
+    }
+  },
   plugins: [
     require('tailwindcss')('./tailwind.config.js'),
     require('autoprefixer')
