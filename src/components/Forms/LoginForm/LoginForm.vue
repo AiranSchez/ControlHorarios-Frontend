@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import FormInput from '../Forms/FormInput'
-import FormButton from '../Forms/FormButton'
+import FormInput from '../FormInput/FormInput'
+import FormButton from '../FormButton/FormButton'
 export default {
   name: 'LoginForm',
   components: {
