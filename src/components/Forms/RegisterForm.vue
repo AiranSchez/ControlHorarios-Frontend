@@ -44,6 +44,7 @@ export default {
       registerCompany(this.data).then(resp => {
         if (resp.status === 201) {
           this.$router.push(`/company/profile/${resp.data.CompanyID}`)
+          localStorage.setItem('CompanyID', resp.data.CompanyID)
         }
       })
     },

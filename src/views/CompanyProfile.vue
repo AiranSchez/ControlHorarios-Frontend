@@ -14,6 +14,7 @@
         <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type = 'Projects'">Projects</div>
         <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type = 'Calendar'">Calendar</div>
         <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type = 'Employees'">Employees</div>
+        <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type = 'CreateEmployee'">Create Employee</div>
       </div>
 
       <div class="flex p-3 text-white bg-red-500 rounded cursor-pointer text-center text-sm">
@@ -28,7 +29,12 @@
 <section class="w-full h-full p-4">
   <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Projects'">Projects</div>
   <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Calendar'">Calendar</div>
-  <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Employees'">Employees</div>
+  <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Employees'">
+    <EmployeesList/>
+  </div>
+  <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'CreateEmployee'">
+    <CreateEmployee/>
+  </div>
   </section>
 
 </main>
@@ -36,8 +42,14 @@
 </template>
 
 <script>
+import EmployeesList from '../components/CompanyProfile/Employees/EmployeesList.vue'
+import CreateEmployee from '../components/CompanyProfile/Employees/CreateEmployee.vue'
 export default {
   name: 'CompanyProfile',
+  components: {
+    EmployeesList,
+    CreateEmployee
+  },
   data () {
     return {
       type: ''
