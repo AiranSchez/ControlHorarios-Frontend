@@ -8,4 +8,13 @@ export default class Client {
   async registerCompany (dto) {
     return await axios.post('https://flipday.es/api/companies/', dto).then(response => response)
   }
+
+  async createEmployee (dto, companyID) {
+    console.log(dto)
+    return await axios.post('https://flipday.es/api/employee/' + companyID, dto).then(response => response)
+  }
+
+  async getEmployees (companyID) {
+    return await axios.get('https://flipday.es/api/companies/' + companyID + '/employees').then(response => response)
+  }
 }
