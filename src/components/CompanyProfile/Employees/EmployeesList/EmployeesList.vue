@@ -48,7 +48,7 @@ export default {
     }
   },
   beforeCreate: function () {
-    getEmployees(2).then(resp => {
+    getEmployees(1).then(resp => {
       if (resp.status === 200) {
         this.employeesList = resp.data.data
         console.log(this.employeesList)
