@@ -31,7 +31,7 @@ const routes = [
     component: () => import('../views/EmployeeProfile.vue')
   },
   {
-    path: '/company/profile',
+    path: '/company/profile/:id',
     name: 'CompanyProfile',
     component: () => import('../views/CompanyProfile.vue')
   }
