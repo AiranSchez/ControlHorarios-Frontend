@@ -42,8 +42,8 @@
 </template>
 
 <script>
-import EmployeesList from '../components/CompanyProfile/Employees/EmployeesList.vue'
-import CreateEmployee from '../components/CompanyProfile/Employees/CreateEmployee.vue'
+import EmployeesList from '../components/CompanyProfile/Employees/EmployeesList/EmployeesList.vue'
+import CreateEmployee from '../components/CompanyProfile/Employees/CreateEmployee/CreateEmployee.vue'
 export default {
   name: 'CompanyProfile',
   components: {
