@@ -2,12 +2,12 @@
     <div>
         <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
             <h1 class="mb-8 text-3xl text-center">Sign Up ;)</h1>
-            <FormInput label="Name" placeholder="Your name" v-on:fieldValue="nameReceived"/>
-            <FormInput label="Email" placeholder="Email" v-on:fieldValue="emailReceived"/>
-            <FormInput label="Password" placeholder="Your password" v-on:fieldValue="passwordReceived"/>
-            <FormInput label="Confirm password" placeholder="Your password" v-on:fieldValue="repeatedPasswordReceived"/>
-            <FormInput label="Company name" placeholder="Your company name" v-on:fieldValue="companyNameReceived"/>
-            <FormInput label="Location" placeholder="Your company location" v-on:fieldValue="locationReceived"/>
+            <FormInput label="Name" placeholder="Your name" id="forminput-name" v-on:fieldValue="nameReceived"/>
+            <FormInputEmail label="Email" placeholder="Email" id="forminput-email" v-on:fieldValue="emailReceived" />
+            <FormInputPassword label="Password" placeholder="Your password" id="forminput-password" v-on:fieldValue="passwordReceived"/>
+            <FormInputPassword label="Confirm password" placeholder="Your password" id="forminput-repeatpassword" v-on:fieldValue="repeatedPasswordReceived"/>
+            <FormInput label="Company name" placeholder="Your company name" id="forminput-companyname" v-on:fieldValue="companyNameReceived"/>
+            <FormInput label="Location" placeholder="Your company location" id="forminput-location" v-on:fieldValue="locationReceived"/>
             <FormButton @click.native="register" value="Sign up"/>
             <div class="text-center text-sm text-grey-dark mt-4">
                 By signing up, you agree to the
@@ -27,14 +27,19 @@
 </template>
 
 <script>
-import FormInput from '../Forms/FormInput'
-import FormButton from '../Forms/FormButton'
+import FormInput from '../FormInput/FormInput'
+import FormButton from '../FormButton/FormButton'
 import { registerCompany } from '@/domain/services/companiesServices'
+import FormInputPassword from '@/components/Forms/FormInputPassword/FormInputPassword'
+import FormInputEmail from '@/components/Forms/FormInputEmail/FormInputEmail'
+
 export default {
   name: 'RegisterForm',
   components: {
     FormInput,
-    FormButton
+    FormButton,
+    FormInputPassword,
+    FormInputEmail
   },
   methods: {
     redirectToLogin () {

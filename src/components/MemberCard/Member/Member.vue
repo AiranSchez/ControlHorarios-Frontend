@@ -40,9 +40,9 @@
 </template>
 
 <script>
-import Blockquote from './Blockquote.vue'
-import MemberAvatar from './MemberAvatar.vue'
-import MemberNameRol from './MemberNameRol'
+import Blockquote from '../Blockquote/Blockquote.vue'
+import MemberAvatar from '../MemberAvatar/MemberAvatar.vue'
+import MemberNameRol from '../MemberNameRol/MemberNameRol'
 export default {
   name: 'Member',
   components: {
