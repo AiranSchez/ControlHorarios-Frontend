@@ -1,4 +1,13 @@
+const path = require("path")
+
 module.exports = {
+  webpackFinal: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@": path.join(__dirname, "../src/")
+    }
+    return config
+  },
   "stories": [
     "../src/**/*.stories.mdx",
     "../src/**/*.stories.@(js|jsx|ts|tsx)"
@@ -9,15 +18,4 @@ module.exports = {
     "@storybook/addon-actions",
     "@storybook/addon-a11y"
   ]
-}
-const path = require("path")
-
-module.exports = {
-  webpackFinal: (config) => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      "@": path.join(__dirname, "../src/")
-    }
-    return config
-  }
 }
