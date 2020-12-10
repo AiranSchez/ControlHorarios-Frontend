@@ -15,5 +15,5 @@ describe('FormInputEmail', () => {
     await fireEvent.change(input, { target: { value: 'asdasd@asdasda.com' } })
     const test = screen.getByText('Valid email')
     expect(test).toBeInTheDocument()
-  })*/
+  }) */
 })
