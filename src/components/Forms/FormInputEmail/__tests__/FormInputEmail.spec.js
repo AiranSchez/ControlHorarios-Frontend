@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/vue'
+import { render, screen } from '@testing-library/vue'
 import '@testing-library/jest-dom'
 import FormInputEmail from '@/components/Forms/FormInputEmail/FormInputEmail'
 
