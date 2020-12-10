@@ -36,7 +36,7 @@
 <script>
 
 import { getEmployeeData } from '@/domain/services/employeeServices'
-import Member from '../components/MemberCard/Member'
+import Member from '../components/MemberCard/Member/Member'
 export default {
   name: 'Home',
   components: {

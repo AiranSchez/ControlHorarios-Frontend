@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import FormInput from '../../Forms/FormInput'
-import FormButton from '../../Forms/FormButton'
+import FormInput from '../../../Forms/FormInput/FormInput'
+import FormButton from '../../../Forms/FormButton/FormButton'
 import { createEmployee } from '@/domain/services/companiesServices'
 export default {
   name: 'CreateEmployee',
