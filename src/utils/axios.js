@@ -22,6 +22,10 @@ export default class Client {
     return await axios.post('https://flipday.es/api/user/login', dto).then(response => response)
   }
 
+  async deleteEmployee (companyID, UserID) {
+    return await axios.put('https://flipday.es/api/companies/' + companyID + '/employees', UserID).then(response => response)
+  }
+
   async checkIn (id, description) {
     return await axios.post('https://flipday.es/api/employee/' + id + '/checkin', description).then(response => response)
   }
