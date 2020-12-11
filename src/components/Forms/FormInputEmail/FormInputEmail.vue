@@ -1,9 +1,8 @@
 <template>
   <div class="mb-4">
     <label :for="id" class="font-bold text-grey-darker block mb-2">{{ label }}</label>
-    <input :id="id" type="email" @change="objChanged" class="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-2 py-2 rounded shadow" :placeholder="placeholder" v-model="field">
-    <div v-if="checkEmail(this.field)">Valid email</div>
-    <div v-else>Invalid email</div>
+    <input :id="id" type="email" @change="onInputChange" :class="[ isValidEmail && field !== '' ? validStyles : invalidStyles ]" class="block appearance-none w-full hover:border-grey px-2 py-2 rounded shadow" :placeholder="placeholder" v-model="field">
+    <div v-if="!checkEmail(this.field)">Invalid email</div>
   </div>
 </template>
 
@@ -17,15 +16,19 @@ export default {
   },
   data () {
     return {
-      field: ''
+      field: '',
+      isValidEmail: '',
+      validStyles: 'border-2 border-green-300',
+      invalidStyles: 'border-2 border-red-300'
     }
   },
   methods: {
-    objChanged () {
+    onInputChange () {
       if (this.checkEmail(this.field)) {
         this.$emit('fieldValue', this.field)
+        this.isValidEmail = true
       } else {
-        console.log('Incorrect email')
+        this.isValidEmail = false
       }
     },
     checkEmail (email) {
