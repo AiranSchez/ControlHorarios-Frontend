@@ -19,7 +19,9 @@
                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
                 </td>
 
-                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">Owner</td>
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
+                  <EmployeeDeleteButton @click.native="deleteEmployee(employee.UserID)"/>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -27,12 +29,13 @@
 </template>
 
 <script>
-import { getEmployees } from '@/domain/services/companiesServices'
+import { getEmployees, deleteEmployee } from '@/domain/services/companiesServices'
 import EmployeeInfo from '@/components/CompanyProfile/Employees/EmployeesList/EmployeeInfo/EmployeeInfo'
 import EmployeeImg from '@/components/CompanyProfile/Employees/EmployeesList/EmployeeImg/EmployeeImg'
+import EmployeeDeleteButton from '@/components/CompanyProfile/Employees/EmployeesList/EmployeeDeleteButton/EmployeeDeleteButton'
 export default {
   name: 'EmployeesList',
-  components: { EmployeeImg, EmployeeInfo },
+  components: { EmployeeDeleteButton, EmployeeImg, EmployeeInfo },
   data () {
     return {
       employeesList: []
@@ -45,6 +48,16 @@ export default {
         console.log(this.employeesList)
       }
     })
+  },
+  methods: {
+    deleteEmployee (UserID) {
+      console.log(UserID)
+      deleteEmployee(1, { UserID }).then(resp => {
+        if (resp.status === 200) {
+          console.log(resp)
+        }
+      })
+    }
   }
 }
 </script>

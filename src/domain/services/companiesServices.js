@@ -14,3 +14,8 @@ export const getEmployees = async (companyID) => {
   const client = new Client()
   return client.getEmployees(companyID)
 }
+
+export const deleteEmployee = async (companyID, UserID) => {
+  const client = new Client()
+  return client.deleteEmployee(companyID, UserID)
+}
