@@ -1,7 +1,7 @@
 <template>
   <div class="mb-4">
     <label :for="id" class="font-bold text-grey-darker block mb-2">{{ label }}</label>
-    <input :id="id" type="email" @change="onInputChange" :class="[ isValidEmail && field !== '' ? validStyles : invalidStyles ]" class="block appearance-none w-full hover:border-grey px-2 py-2 rounded shadow" :placeholder="placeholder" v-model="field">
+    <input :id="id" type="email" @change="onInputChange" :class="[ field !== '' ? [isValidEmail ? validStyles : invalidStyles] : defaultStyles ]" class="block appearance-none w-full hover:border-grey px-2 py-2 rounded shadow" :placeholder="placeholder" v-model="field">
     <div v-if="!checkEmail(this.field)">Invalid email</div>
   </div>
 </template>
@@ -18,6 +18,7 @@ export default {
     return {
       field: '',
       isValidEmail: '',
+      defaultStyles: 'border-2 border-grey-300',
       validStyles: 'border-2 border-green-300',
       invalidStyles: 'border-2 border-red-300'
     }
