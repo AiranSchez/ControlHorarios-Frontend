@@ -1,8 +1,6 @@
 <template>
   <div class="flex-shrink-0 h-10 w-10">
-    <img class="h-10 w-10 rounded-full"
-         :src="require(`@/assets/${picture}`)"
-         alt="">
+    <img class="h-10 w-10 rounded-full" :src="require(`@/assets/${picture}`)" alt="">
   </div>
 </template>
 
