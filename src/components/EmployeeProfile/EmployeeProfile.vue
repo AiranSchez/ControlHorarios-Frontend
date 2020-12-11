@@ -52,7 +52,14 @@ export default {
   mounted () {
     this.time = dayjs()
     const employeeID = localStorage.getItem('employeeID')
-    getSummary(employeeID).then(resp => { resp.forEach(record => { this.records.push(record) }) })
+    getSummary(employeeID)
+      .then(resp => {
+        resp.forEach(record => {
+          record.StartTime = dayjs(record.StartTime).format('DD/MM/YYYY HH:mm:ss')
+          record.EndTime = dayjs(record.EndTime).format('DD/MM/YYYY HH:mm:ss')
+          this.records.push(record)
+        })
+      })
   },
   methods: {
     chekIn () {
