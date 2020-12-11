@@ -38,8 +38,11 @@ export default {
     login () {
       loginUser(this.data).then(resp => {
         if (resp.status === 200) {
+          localStorage.setItem('UserID', resp.data.UserID)
+
           if (resp.data.Rol === 'company') {
             this.$router.push(`/company/profile/${resp.data.SecondaryID}`)
+            localStorage.setItem('companyID', resp.data.SecondaryID)
           } else {
             localStorage.setItem('employeeID', resp.data.SecondaryID)
             this.$router.push(`/employee/profile/${resp.data.SecondaryID}`)
@@ -58,7 +61,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

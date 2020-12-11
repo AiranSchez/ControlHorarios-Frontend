@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="bg-red-300 flex flex-col justify-center">
-    <Header/>
+    <Header user=""/>
     <router-view/>
     <Footer/>
   </div>
