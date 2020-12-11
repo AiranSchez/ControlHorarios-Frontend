@@ -21,4 +21,16 @@ export default class Client {
   async loginUser (dto) {
     return await axios.post('https://flipday.es/api/user/login', dto).then(response => response)
   }
+
+  async checkIn (id, description) {
+    return await axios.post('https://flipday.es/api/employee/' + id + '/checkin', description).then(response => response)
+  }
+
+  async checkOut (userID, recordID) {
+    return await axios.put(`https://flipday.es/api/employee/${userID}/checkout/${recordID}`).then(response => response)
+  }
+
+  async getSummary (employeeID) {
+    return await axios.get(`https://flipday.es/api/employee/${employeeID}/summary`).then(response => response)
+  }
 }
