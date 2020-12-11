@@ -42,7 +42,7 @@ export default {
     }
   },
   beforeCreate: function () {
-    getEmployees(1).then(resp => {
+    getEmployees(localStorage.getItem('CompanyID')).then(resp => {
       if (resp.status === 200) {
         this.employeesList = resp.data.data
         console.log(this.employeesList)
@@ -52,7 +52,7 @@ export default {
   methods: {
     deleteEmployee (UserID) {
       console.log(UserID)
-      deleteEmployee(1, { UserID }).then(resp => {
+      deleteEmployee(localStorage.getItem('CompanyID'), { UserID }).then(resp => {
         if (resp.status === 200) {
           console.log(resp)
         }
