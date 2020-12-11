@@ -56,7 +56,7 @@ export default {
           }
         })
       } else if (this.Error === '') {
-        this.Error += 'Faltan campos por rellenar'
+        this.Error += 'Missing fields to fill'
       }
     },
     nameReceived (field) {
