@@ -8,7 +8,8 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "test": "vue-cli-service test:unit --watch",
-    "serve-lint": "npm run lint --fix && npm run serve"
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
@@ -18,12 +19,19 @@
     "autoprefixer": "^9.8.6",
     "axios": "^0.21.0",
     "core-js": "^3.6.5",
+    "dayjs": "^1.9.7",
     "postcss": "^7.0.35",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.1",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@storybook/addon-a11y": "^6.1.10",
+    "@storybook/addon-actions": "^6.1.10",
+    "@storybook/addon-essentials": "^6.1.10",
+    "@storybook/addon-links": "^6.1.10",
+    "@storybook/vue": "^6.1.10",
     "@testing-library/dom": "^7.28.1",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/user-event": "^12.5.0",
@@ -36,6 +44,7 @@
     "@vue/eslint-config-standard": "^5.1.2",
     "@vue/test-utils": "^1.0.3",
     "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
     "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-node": "^11.1.0",
