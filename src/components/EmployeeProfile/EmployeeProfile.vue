@@ -63,7 +63,7 @@ import Timer from './Timer/Timer'
 import dayjs from 'dayjs'
 import { checkIn, checkOut, getSummary } from '@/domain/services/employeeServices'
 import EmployeeSummary from '@/components/EmployeeProfile/EmployeeSummary/EmployeeSummary'
-import LogoutButton from './LogoutButton/LogoutButton.vue'
+import LogoutButton from '../Commons/LogoutButton/LogoutButton.vue'
 
 export default {
   components: {
