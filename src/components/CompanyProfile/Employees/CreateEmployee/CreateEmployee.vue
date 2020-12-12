@@ -4,9 +4,10 @@
             <h1 class="mb-8 text-3xl text-center">Add Employee</h1>
             <FormInput label="Name" placeholder="Employee name" v-on:fieldValue="nameReceived"/>
             <FormInput label="Surname" placeholder=" Employee surname" v-on:fieldValue="lastnameReceived"/>
-            <FormInput label="Email" placeholder="Employee email" v-on:fieldValue="emailReceived"/>
-            <FormInput label="Password" placeholder="Employee password" v-on:fieldValue="passwordReceived"/>
-            <FormInput label="Confirm password" placeholder="Repeat password" v-on:fieldValue="repeatedPasswordReceived"/>
+            <FormInputEmail label="Email" placeholder="Email" id="forminput-email" v-on:fieldValue="emailReceived" />
+            <FormInputPassword label="Password" placeholder="Your password" id="forminput-password" v-on:fieldValue="passwordReceived"/>
+            <FormInputPassword label="Confirm password" placeholder="Your password" id="forminput-repeatpassword" v-on:fieldValue="repeatedPasswordReceived"/>
+            <div class="text-center text-red-500 font-bold">{{ Error }}</div>
             <FormButton @click.native="createEmployee" value="Add employee"/>
         </div>
     </div>
@@ -15,20 +16,28 @@
 <script>
 import FormInput from '../../../Forms/FormInput/FormInput'
 import FormButton from '../../../Forms/FormButton/FormButton'
+import FormInputEmail from '@/components/Forms/FormInputEmail/FormInputEmail'
+import FormInputPassword from '@/components/Forms/FormInputPassword/FormInputPassword'
 import { createEmployee } from '@/domain/services/companiesServices'
 export default {
   name: 'CreateEmployee',
   components: {
     FormInput,
-    FormButton
+    FormButton,
+    FormInputEmail,
+    FormInputPassword
   },
   methods: {
     createEmployee () {
-      createEmployee(this.data, localStorage.getItem('companyID')).then(resp => {
-        if (resp.status === 201) {
-          console.log('empleado creado')
-        }
-      })
+      if (this.checkIfAllFieldsAreValid()) {
+        createEmployee(this.data, localStorage.getItem('companyID')).then(resp => {
+          if (resp.status === 201) {
+            console.log('empleado creado')
+          }
+        })
+      } else if (this.Error === '') {
+        this.Error += 'Missing fields to fill'
+      }
     },
     nameReceived (field) {
       this.data.username = field
@@ -45,10 +54,15 @@ export default {
     },
     repeatedPasswordReceived (field) {
       if (this.data.password === field) {
-        console.log('todo ok')
+        this.readyToSend = true
+        this.Error = ''
       } else {
-        console.log('error')
+        this.readyToSend = false
+        this.Error = 'Not equal passwords'
       }
+    },
+    checkIfAllFieldsAreValid () {
+      return !!(this.readyToSend && this.data.firstname && this.data.lastname && this.data.username && this.data.email && this.data.password !== '')
     }
   },
   data () {
@@ -60,7 +74,9 @@ export default {
         email: '',
         password: '',
         rol: 'Employee'
-      }
+      },
+      readyToSend: false,
+      Error: ''
     }
   }
 }
