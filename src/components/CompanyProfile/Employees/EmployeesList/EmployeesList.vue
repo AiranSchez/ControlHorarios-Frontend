@@ -20,7 +20,12 @@
                     <Active :isActive="employee.User.Status"/>
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                  <DeleteButton @click.native="deleteEmployee(employee.UserID)"/>
+                    <component :is="ff">
+                      <IconButton name="user-minus" color="red" @click.native="disableEmployee(employee.UserID)"/>
+                    </component>
+                    <component :is="ff">
+                      <IconButton name="user-plus" color="green" @click.native="enableEmployee(employee.UserID)"/>
+                    </component>
                 </td>
             </tr>
         </tbody>
@@ -29,34 +34,45 @@
 </template>
 
 <script>
-import { getEmployees, deleteEmployee } from '@/domain/services/companiesServices'
+import { getEmployees, updateEmployeeStatus } from '@/domain/services/companiesServices'
 import EmployeeInfo from '@/components/CompanyProfile/Employees/EmployeesList/EmployeeInfo/EmployeeInfo'
 import EmployeeImg from '@/components/CompanyProfile/Employees/EmployeesList/EmployeeImg/EmployeeImg'
-import DeleteButton from '@/components/Commons/DeleteButton/DeleteButton'
+import IconButton from '@/components/Commons/IconButton/IconButton'
 import Active from './Active'
 export default {
   name: 'EmployeesList',
-  components: { EmployeeImg, EmployeeInfo, Active, DeleteButton },
+  components: {
+    EmployeeImg,
+    EmployeeInfo,
+    Active,
+    IconButton
+  },
   data () {
     return {
       employeesList: []
     }
   },
   beforeCreate: function () {
-    const companyID = localStorage.getItem('companyID')
+    const companyID = localStorage.getItem('CompanyID')
     console.log(companyID)
     getEmployees(companyID).then(resp => {
       if (resp.status === 200) {
         this.employeesList = resp.data.data
-        console.log(this.employeesList)
       }
     })
   },
   methods: {
-    deleteEmployee (UserID) {
-      deleteEmployee(localStorage.getItem('companyID'), { UserID }).then(resp => {
+    disableEmployee (UserID) {
+      updateEmployeeStatus(localStorage.getItem('CompanyID'), UserID, false).then(resp => {
         if (resp.status === 200) {
-          console.log(resp)
+          this.$forceUpdate()
+        }
+      })
+    },
+    enableEmployee (UserID) {
+      updateEmployeeStatus(localStorage.getItem('CompanyID'), UserID, true).then(resp => {
+        if (resp.status === 200) {
+          this.$forceUpdate()
         }
       })
     }

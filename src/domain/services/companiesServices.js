@@ -15,7 +15,7 @@ export const getEmployees = async (companyID) => {
   return client.getEmployees(companyID)
 }
 
-export const deleteEmployee = async (companyID, UserID) => {
+export const updateEmployeeStatus = async (companyID, UserID, status) => {
   const client = new Client()
-  return client.deleteEmployee(companyID, UserID)
+  return client.updateEmployeeStatus(companyID, UserID, status)
 }
