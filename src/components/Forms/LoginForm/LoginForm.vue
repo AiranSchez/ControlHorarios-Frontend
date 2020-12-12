@@ -39,10 +39,11 @@ export default {
       loginUser(this.data).then(resp => {
         if (resp.status === 200) {
           localStorage.setItem('UserID', resp.data.UserID)
-
+          console.log(resp)
           if (resp.data.Rol === 'company') {
             this.$router.push(`/company/profile/${resp.data.SecondaryID}`)
             localStorage.setItem('companyID', resp.data.SecondaryID)
+            console.log(localStorage)
           } else {
             localStorage.setItem('employeeID', resp.data.SecondaryID)
             this.$router.push(`/employee/profile/${resp.data.SecondaryID}`)
