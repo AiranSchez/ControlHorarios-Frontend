@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     createEmployee () {
-      createEmployee(this.data, localStorage.getItem('CompanyID')).then(resp => {
+      createEmployee(this.data, localStorage.getItem('companyID')).then(resp => {
         if (resp.status === 201) {
           console.log('empleado creado')
         }

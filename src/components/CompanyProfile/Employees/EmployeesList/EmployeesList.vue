@@ -20,7 +20,7 @@
                     <Active :isActive="employee.User.Status"/>
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                  <EmployeeDeleteButton @click.native="deleteEmployee(employee.UserID)"/>
+                  <DeleteButton @click.native="deleteEmployee(employee.UserID)"/>
                 </td>
             </tr>
         </tbody>
@@ -32,18 +32,20 @@
 import { getEmployees, deleteEmployee } from '@/domain/services/companiesServices'
 import EmployeeInfo from '@/components/CompanyProfile/Employees/EmployeesList/EmployeeInfo/EmployeeInfo'
 import EmployeeImg from '@/components/CompanyProfile/Employees/EmployeesList/EmployeeImg/EmployeeImg'
-import EmployeeDeleteButton from '@/components/CompanyProfile/Employees/EmployeesList/EmployeeDeleteButton/EmployeeDeleteButton'
+import DeleteButton from '@/components/Commons/DeleteButton/DeleteButton'
 import Active from './Active'
 export default {
   name: 'EmployeesList',
-  components: { EmployeeDeleteButton, EmployeeImg, EmployeeInfo, Active },
+  components: { EmployeeImg, EmployeeInfo, Active, DeleteButton },
   data () {
     return {
       employeesList: []
     }
   },
   beforeCreate: function () {
-    getEmployees(localStorage.getItem('CompanyID')).then(resp => {
+    const companyID = localStorage.getItem('companyID')
+    console.log(companyID)
+    getEmployees(companyID).then(resp => {
       if (resp.status === 200) {
         this.employeesList = resp.data.data
         console.log(this.employeesList)
@@ -52,8 +54,7 @@ export default {
   },
   methods: {
     deleteEmployee (UserID) {
-      console.log(UserID)
-      deleteEmployee(localStorage.getItem('CompanyID'), { UserID }).then(resp => {
+      deleteEmployee(localStorage.getItem('companyID'), { UserID }).then(resp => {
         if (resp.status === 200) {
           console.log(resp)
         }
