@@ -42,7 +42,7 @@ export default {
 
           if (resp.data.Rol === 'company') {
             this.$router.push(`/company/profile/${resp.data.SecondaryID}`)
-            localStorage.setItem('companyID', resp.data.SecondaryID)
+            localStorage.setItem('CompanyID', resp.data.SecondaryID)
           } else {
             localStorage.setItem('employeeID', resp.data.SecondaryID)
             this.$router.push(`/employee/profile/${resp.data.SecondaryID}`)

@@ -1,22 +1,23 @@
 <template>
 <div class="flex justify-center">
-    <table class="w-full">
+    <table class="w-full  text-left bg-white">
         <tbody v-for="employee in employeesList" v-bind:key="employee" class="bg-white">
             <tr>
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                    <div class="flex items-center">
-                        <EmployeeImg picture="default-perfil.png"/>
-                        <EmployeeInfo :firstName="employee.FirstName" :lastName="employee.LastName"  />
-                    </div>
+                  <EmployeeImg picture="default-perfil.png"/>
                 </td>
-
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                    <div class="text-sm leading-5 text-gray-900">Section</div>
+                  <EmployeeInfo :firstName="employee.FirstName" :lastName="employee.LastName"  />
+                </td>
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                    <div class="text-sm leading-5 text-gray-500">{{employee.User.Email}}</div>
+                </td>
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                     <div class="text-sm leading-5 text-gray-500">SectionValue</div>
                 </td>
 
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                    <Active :isActive="employee.User.Status"/>
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
                   <EmployeeDeleteButton @click.native="deleteEmployee(employee.UserID)"/>
@@ -32,9 +33,10 @@ import { getEmployees, deleteEmployee } from '@/domain/services/companiesService
 import EmployeeInfo from '@/components/CompanyProfile/Employees/EmployeesList/EmployeeInfo/EmployeeInfo'
 import EmployeeImg from '@/components/CompanyProfile/Employees/EmployeesList/EmployeeImg/EmployeeImg'
 import EmployeeDeleteButton from '@/components/CompanyProfile/Employees/EmployeesList/EmployeeDeleteButton/EmployeeDeleteButton'
+import Active from './Active'
 export default {
   name: 'EmployeesList',
-  components: { EmployeeDeleteButton, EmployeeImg, EmployeeInfo },
+  components: { EmployeeDeleteButton, EmployeeImg, EmployeeInfo, Active },
   data () {
     return {
       employeesList: []
@@ -60,6 +62,3 @@ export default {
   }
 }
 </script>
-
-<style>
-</style>
