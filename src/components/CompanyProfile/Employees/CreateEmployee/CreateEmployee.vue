@@ -8,7 +8,7 @@
             <FormInputPassword label="Password" placeholder="Your password" id="forminput-password" v-on:fieldValue="passwordReceived"/>
             <FormInputPassword label="Confirm password" placeholder="Your password" id="forminput-repeatpassword" v-on:fieldValue="repeatedPasswordReceived"/>
             <div class="text-center text-red-500 font-bold">{{ Error }}</div>
-            <FormButton @click.native="createEmployee" value="Add employee"/>
+            <FormButton @isClicked="createEmployee" value="Add employee"/>
         </div>
     </div>
 </template>
