@@ -20,12 +20,8 @@
                     <Active :isActive="employee.User.Status"/>
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                    <component :is="ff">
-                      <IconButton name="user-minus" color="red" @click.native="disableEmployee(employee.UserID)"/>
-                    </component>
-                    <component :is="ff">
-                      <IconButton name="user-plus" color="green" @click.native="enableEmployee(employee.UserID)"/>
-                    </component>
+                    <IconButton v-if="employee.User.Status" name="user-minus" color="red" @click.native="disableEmployee(employee.UserID)"/>
+                    <IconButton v-else name="user-plus" color="green" @click.native="enableEmployee(employee.UserID)"/>
                 </td>
             </tr>
         </tbody>
@@ -49,7 +45,8 @@ export default {
   },
   data () {
     return {
-      employeesList: []
+      employeesList: [],
+      componentKey: 0
     }
   },
   beforeCreate: function () {
