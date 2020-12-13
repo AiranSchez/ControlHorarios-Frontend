@@ -1,8 +1,8 @@
 import axios from 'axios'
 
 export default class Client {
-  async getEmployeeData () {
-    return await axios.get('https://flipday.es/api/employee/1').then(response => response.data)
+  async getEmployeeData (employeeID) {
+    return await axios.get('https://flipday.es/api/employee/' + employeeID).then(response => response)
   }
 
   async registerCompany (dto) {
@@ -39,5 +39,12 @@ export default class Client {
 
   async getSummary (employeeID) {
     return await axios.get(`https://flipday.es/api/employee/${employeeID}/summary`).then(response => response)
+  }
+
+  async updatePassword (userID, newPassword) {
+    const dto = {
+      Password: newPassword
+    }
+    return await axios.put(`https://flipday.es/api/employee/${userID}/password`, dto).then(response => response)
   }
 }
