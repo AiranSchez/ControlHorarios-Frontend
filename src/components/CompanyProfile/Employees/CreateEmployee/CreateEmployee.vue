@@ -30,7 +30,7 @@ export default {
   methods: {
     createEmployee () {
       if (this.checkIfAllFieldsAreValid()) {
-        createEmployee(this.data, localStorage.getItem('companyID')).then(resp => {
+        createEmployee(this.data, localStorage.getItem('CompanyID')).then(resp => {
           if (resp.status === 201) {
             console.log('empleado creado')
           }
