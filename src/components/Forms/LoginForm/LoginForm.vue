@@ -36,16 +36,17 @@ export default {
       this.data.email = field
     },
     login () {
+      localStorage.clear()
       loginUser(this.data).then(resp => {
         if (resp.status === 200) {
           localStorage.setItem('UserID', resp.data.UserID)
           console.log(resp)
           if (resp.data.Rol === 'company') {
             this.$router.push(`/company/profile/${resp.data.SecondaryID}`)
-            localStorage.setItem('companyID', resp.data.SecondaryID)
+            localStorage.setItem('CompanyID', resp.data.SecondaryID)
             console.log(localStorage)
           } else {
-            localStorage.setItem('employeeID', resp.data.SecondaryID)
+            localStorage.setItem('EmployeeID', resp.data.SecondaryID)
             this.$router.push(`/employee/profile/${resp.data.SecondaryID}`)
           }
         }

@@ -86,7 +86,7 @@ export default {
   },
   mounted () {
     this.time = dayjs()
-    const employeeID = localStorage.getItem('employeeID')
+    const employeeID = localStorage.getItem('EmployeeID')
     getSummary(employeeID)
       .then(resp => {
         resp.forEach(record => {
@@ -98,15 +98,15 @@ export default {
   },
   methods: {
     chekIn () {
-      const employeeID = localStorage.getItem('employeeID')
-      checkIn(employeeID, this.data).then(resp => { localStorage.setItem('recordID', resp.recordID) })
+      const employeeID = localStorage.getItem('EmployeeID')
+      checkIn(employeeID, this.data).then(resp => { localStorage.setItem('RecordID', resp.recordID) })
       this.checkInAt = new Date().toLocaleTimeString(navigator.language, { hour: '2-digit', minute: '2-digit', second: '2-digit' })
       setInterval(() => { this.currentTime = new Date().toLocaleTimeString(navigator.language, { hour: '2-digit', minute: '2-digit', second: '2-digit' }) }, 1000)
       this.isCheckedIn = true
     },
     checkOut () {
-      const employeeID = localStorage.getItem('employeeID')
-      const recordID = localStorage.getItem('recordID')
+      const employeeID = localStorage.getItem('EmployeeID')
+      const recordID = localStorage.getItem('RecordID')
       checkOut(employeeID, recordID).then(resp => { console.log(resp) })
       this.isCheckedIn = false
     }

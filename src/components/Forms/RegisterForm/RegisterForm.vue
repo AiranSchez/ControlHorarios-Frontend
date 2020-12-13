@@ -47,6 +47,7 @@ export default {
       this.$router.push('/login')
     },
     register () {
+      localStorage.clear()
       if (this.checkIfAllFieldsAreValid()) {
         registerCompany(this.data).then(resp => {
           if (resp.status === 201) {
