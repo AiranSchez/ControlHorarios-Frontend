@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/vue'
+import { render, screen } from '@testing-library/vue'
 import '@testing-library/jest-dom'
 import FormInputEmail from '@/components/Forms/FormInputEmail/FormInputEmail'
 
@@ -15,5 +15,5 @@ describe('FormInputEmail', () => {
     await fireEvent.change(input, { target: { value: 'asdasd@asdasda.com' } })
     const test = screen.getByText('Valid email')
     expect(test).toBeInTheDocument()
-  })*/
+  }) */
 })

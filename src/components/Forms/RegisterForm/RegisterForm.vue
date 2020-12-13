@@ -8,7 +8,8 @@
             <FormInputPassword label="Confirm password" placeholder="Your password" id="forminput-repeatpassword" v-on:fieldValue="repeatedPasswordReceived"/>
             <FormInput label="Company name" placeholder="Your company name" id="forminput-companyname" v-on:fieldValue="companyNameReceived"/>
             <FormInput label="Location" placeholder="Your company location" id="forminput-location" v-on:fieldValue="locationReceived"/>
-            <FormButton @click.native="register" value="Sign up"/>
+            <div class="text-center text-red-500 font-bold">{{ Error }}</div>
+            <FormButton @isClicked="register" value="Sign up"/>
             <div class="text-center text-sm text-grey-dark mt-4">
                 By signing up, you agree to the
                 <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
@@ -46,12 +47,18 @@ export default {
       this.$router.push('/login')
     },
     register () {
-      registerCompany(this.data).then(resp => {
-        if (resp.status === 201) {
-          this.$router.push(`/company/profile/${resp.data.CompanyID}`)
-          localStorage.setItem('CompanyID', resp.data.CompanyID)
-        }
-      })
+      localStorage.clear()
+      if (this.checkIfAllFieldsAreValid()) {
+        registerCompany(this.data).then(resp => {
+          if (resp.status === 201) {
+            this.Error = ''
+            localStorage.setItem('CompanyID', resp.data.CompanyID)
+            this.$router.push(`/company/profile/${resp.data.CompanyID}`)
+          }
+        })
+      } else if (this.Error === '') {
+        this.Error += 'Missing fields to fill'
+      }
     },
     nameReceived (field) {
       this.data.username = field
@@ -70,10 +77,15 @@ export default {
     },
     repeatedPasswordReceived (field) {
       if (this.data.password === field) {
-        console.log('todo ok')
+        this.readyToSend = true
+        this.Error = ''
       } else {
-        console.log('error')
+        this.readyToSend = false
+        this.Error = 'Not equal passwords'
       }
+    },
+    checkIfAllFieldsAreValid () {
+      return !!(this.readyToSend && this.data.username && this.data.email && this.data.password && this.data.location && this.data.companyName !== '')
     }
   },
   data () {
@@ -85,7 +97,9 @@ export default {
         location: '',
         companyName: '',
         rol: 'Company'
-      }
+      },
+      readyToSend: false,
+      Error: ''
     }
   }
 }

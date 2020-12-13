@@ -14,3 +14,8 @@ export const getEmployees = async (companyID) => {
   const client = new Client()
   return client.getEmployees(companyID)
 }
+
+export const updateEmployeeStatus = async (companyID, UserID, status) => {
+  const client = new Client()
+  return client.updateEmployeeStatus(companyID, UserID, status)
+}

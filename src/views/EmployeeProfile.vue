@@ -1,12 +1,13 @@
 <template>
   <div class="min-h-screen">
-    <div>Employee Profile</div>
+    <EmployeeProfile/>
   </div>
 </template>
 
 <script>
+import EmployeeProfile from '../components/EmployeeProfile/EmployeeProfile.vue'
 export default {
-
+  components: { EmployeeProfile }
 }
 </script>
 

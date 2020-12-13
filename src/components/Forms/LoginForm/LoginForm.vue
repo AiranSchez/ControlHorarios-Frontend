@@ -2,9 +2,9 @@
   <div class="w-2/5">
     <div class="border-teal p-10 border-t-12 bg-white mb-6 rounded-lg shadow-xl">
         <h1 class="mb-8 text-3xl text-center">Sign In ;)</h1>
-        <FormInput label="Usuario o email" placeholder="Nombre de usuario"/>
-        <FormInput label="Contraseña" placeholder="Contraseña"/>
-        <FormButton value="Log In"/>
+        <FormInputEmail label="Usuario o email" placeholder="Nombre de usuario" id="forminput-email" v-on:fieldValue="emailReceived" />
+        <FormInputPassword label="Contraseña" placeholder="Contraseña" id="forminput-password" v-on:fieldValue="passwordReceived"/>
+        <FormButton value="Log In" @isClicked="login"/>
     </div>
     <div class="flex justify-center flex-row items-center">
       <div class="text-grey-dark text-sm">No tienes cuenta?</div>
@@ -14,22 +14,53 @@
 </template>
 
 <script>
-import FormInput from '../FormInput/FormInput'
+import FormInputEmail from '../FormInputEmail/FormInputEmail'
+import FormInputPassword from '../FormInputPassword/FormInputPassword'
 import FormButton from '../FormButton/FormButton'
+import { loginUser } from '@/domain/services/userServices'
 export default {
   name: 'LoginForm',
   components: {
-    FormInput,
+    FormInputEmail,
+    FormInputPassword,
     FormButton
   },
   methods: {
     redirect () {
       return this.$router.push('/register')
+    },
+    passwordReceived (field) {
+      this.data.password = field
+    },
+    emailReceived (field) {
+      this.data.email = field
+    },
+    login () {
+      localStorage.clear()
+      loginUser(this.data).then(resp => {
+        if (resp.status === 200) {
+          localStorage.setItem('UserID', resp.data.UserID)
+          console.log(resp)
+          if (resp.data.Rol === 'company') {
+            this.$router.push(`/company/profile/${resp.data.SecondaryID}`)
+            localStorage.setItem('CompanyID', resp.data.SecondaryID)
+            localStorage.setItem('UserID', resp.data.UserID)
+          } else {
+            localStorage.setItem('EmployeeID', resp.data.SecondaryID)
+            localStorage.setItem('UserID', resp.data.UserID)
+            this.$router.push(`/employee/profile/${resp.data.SecondaryID}`)
+          }
+        }
+      })
+    }
+  },
+  data () {
+    return {
+      data: {
+        email: '',
+        password: ''
+      }
     }
   }
 }
 </script>
-
-<style>
-
-</style>
