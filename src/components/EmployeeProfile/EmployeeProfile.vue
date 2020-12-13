@@ -8,7 +8,7 @@
       </div>
     </header>
     <main class="flex w-full h-screen">
-      <aside class="w-80 h-screen bg-gray shadow-md w-fulll hidden sm:block">
+      <aside class="w-80 h-screen bg-gray shadow-md hidden sm:block">
         <div class="flex flex-col justify-between h-screen p-4 bg-gray-800">
           <div class="text-sm">
             <div class="bg-gray-900 text-white p-5 rounded cursor-pointer">Employee Name</div>
@@ -52,7 +52,9 @@
         </div>
         <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Calendar'">Calendar</div>
         <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Summary'">Summary</div>
-        <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Settings'">Settings</div>
+        <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md overflow-scroll" v-if= "type === 'Settings'">
+            <EmployeeSettings/>
+        </div>
       </section>
     </main>
   </div>
@@ -64,12 +66,14 @@ import dayjs from 'dayjs'
 import { checkIn, checkOut, getSummary } from '@/domain/services/employeeServices'
 import EmployeeSummary from '@/components/EmployeeProfile/EmployeeSummary/EmployeeSummary'
 import LogoutButton from '../Commons/LogoutButton/LogoutButton.vue'
+import EmployeeSettings from '@/components/EmployeeProfile/EmployeeSettings/EmployeeSettings'
 
 export default {
   components: {
     Timer,
     EmployeeSummary,
-    LogoutButton
+    LogoutButton,
+    EmployeeSettings
   },
   data () {
     return {
