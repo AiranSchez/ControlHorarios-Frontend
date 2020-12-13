@@ -11,10 +11,10 @@
       <div class="flex flex-col justify-between h-screen p-4 bg-gray-800">
         <div class="text-sm">
           <div class="bg-gray-900 text-white p-5 rounded cursor-pointer">Company Name</div>
-          <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type = 'Projects'">Projects</div>
-          <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type = 'Calendar'">Calendar</div>
-          <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type = 'Employees'">Employees</div>
-          <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type = 'CreateEmployee'">Create Employee</div>
+          <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type='Projects'">Projects</div>
+          <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type='Calendar'">Calendar</div>
+          <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type='Employees'">Employees</div>
+          <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type='CreateEmployee'">Create Employee</div>
         </div>
         <div class="flex p-3 text-white bg-red-500 rounded cursor-pointer text-center text-sm">
          <LogoutButton/>
@@ -54,7 +54,3 @@ export default {
 
 }
 </script>
-
-<style>
-
-</style>

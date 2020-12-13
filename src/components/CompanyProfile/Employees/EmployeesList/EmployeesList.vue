@@ -1,40 +1,22 @@
 <template>
 <div class="flex justify-center">
-    <table class="w-full">
-        <tbody v-for="employee in employeesList" v-bind:key="employee" class="bg-white">
-            <tr>
-                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                    <div class="flex items-center">
-                        <EmployeeImg picture="default-perfil.png"/>
-                        <EmployeeInfo :firstName="employee.FirstName" :lastName="employee.LastName"  />
-                    </div>
-                </td>
-
-                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                    <div class="text-sm leading-5 text-gray-900">Section</div>
-                    <div class="text-sm leading-5 text-gray-500">SectionValue</div>
-                </td>
-
-                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
-                </td>
-                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                  <DeleteButton @click.native="deleteEmployee(employee.UserID)"/>
-                </td>
-            </tr>
+    <table class="w-full text-left bg-white">
+        <tbody v-for="employee in employeesList" v-bind:key="employee">
+            <EmployeeInfo :userID="employee.UserID" :firstName="employee.FirstName" :lastName="employee.LastName" :email="employee.User.Email" :isEnabled="employee.User.Status"/>
         </tbody>
     </table>
 </div>
 </template>
 
 <script>
-import { getEmployees, deleteEmployee } from '@/domain/services/companiesServices'
+import { getEmployees } from '@/domain/services/companiesServices'
 import EmployeeInfo from '@/components/CompanyProfile/Employees/EmployeesList/EmployeeInfo/EmployeeInfo'
-import EmployeeImg from '@/components/CompanyProfile/Employees/EmployeesList/EmployeeImg/EmployeeImg'
-import DeleteButton from '@/components/Commons/DeleteButton/DeleteButton'
+
 export default {
   name: 'EmployeesList',
-  components: { DeleteButton, EmployeeImg, EmployeeInfo },
+  components: {
+    EmployeeInfo
+  },
   data () {
     return {
       employeesList: []
@@ -42,25 +24,12 @@ export default {
   },
   beforeCreate: function () {
     const companyID = localStorage.getItem('CompanyID')
-    console.log(companyID)
     getEmployees(companyID).then(resp => {
       if (resp.status === 200) {
+        console.log(resp.data.data)
         this.employeesList = resp.data.data
-        console.log(this.employeesList)
       }
     })
-  },
-  methods: {
-    deleteEmployee (UserID) {
-      deleteEmployee(localStorage.getItem('CompanyID'), { UserID }).then(resp => {
-        if (resp.status === 200) {
-          console.log(resp)
-        }
-      })
-    }
   }
 }
 </script>
-
-<style>
-</style>
