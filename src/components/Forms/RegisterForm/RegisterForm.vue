@@ -9,7 +9,7 @@
             <FormInput label="Company name" placeholder="Your company name" id="forminput-companyname" v-on:fieldValue="companyNameReceived"/>
             <FormInput label="Location" placeholder="Your company location" id="forminput-location" v-on:fieldValue="locationReceived"/>
             <div class="text-center text-red-500 font-bold">{{ Error }}</div>
-            <FormButton @click.native="register" value="Sign up"/>
+            <FormButton @isClicked="register" value="Sign up"/>
             <div class="text-center text-sm text-grey-dark mt-4">
                 By signing up, you agree to the
                 <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
@@ -47,6 +47,7 @@ export default {
       this.$router.push('/login')
     },
     register () {
+      localStorage.clear()
       if (this.checkIfAllFieldsAreValid()) {
         registerCompany(this.data).then(resp => {
           if (resp.status === 201) {
