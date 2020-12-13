@@ -4,7 +4,7 @@
         <h1 class="mb-8 text-3xl text-center">Sign In ;)</h1>
         <FormInputEmail label="Usuario o email" placeholder="Nombre de usuario" id="forminput-email" v-on:fieldValue="emailReceived" />
         <FormInputPassword label="Contraseña" placeholder="Contraseña" id="forminput-password" v-on:fieldValue="passwordReceived"/>
-        <FormButton value="Log In" @click.native="login"/>
+        <FormButton value="Log In" @isClicked="login"/>
     </div>
     <div class="flex justify-center flex-row items-center">
       <div class="text-grey-dark text-sm">No tienes cuenta?</div>
