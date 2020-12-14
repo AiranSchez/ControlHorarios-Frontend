@@ -29,28 +29,16 @@
       />
     </div>
     <img src="../assets/Home-picture-3.jpg" alt="Meeting Picture" />
-    <div @click="getName()">Haz click aqui {{ name }}</div>
-    <Member/>
+    <Members/>
   </div>
 </template>
 <script>
+import Members from '../components/MemberCard/Members/Members'
 
-import { getEmployeeData } from '@/domain/services/employeeServices'
-import Member from '../components/MemberCard/Member/Member'
 export default {
   name: 'Home',
   components: {
-    Member
-  },
-  data () {
-    return {
-      name: ''
-    }
-  },
-  methods: {
-    getName () {
-      getEmployeeData().then(resp => { this.name = resp })
-    }
+    Members
   }
 }
 </script>
