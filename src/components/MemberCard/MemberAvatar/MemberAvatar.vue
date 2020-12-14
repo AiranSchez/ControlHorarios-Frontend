@@ -1,6 +1,6 @@
 <template>
   <div>
-      <img class="w-32 h-32 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto" :src="require(`../../../assets/${picture}`)" alt="Member project avatar"/>
+      <img class="w-32 h-32 rounded-full mx-auto" :src="require(`../../../assets/${picture}`)" alt="Member project avatar"/>
   </div>
 </template>
 
