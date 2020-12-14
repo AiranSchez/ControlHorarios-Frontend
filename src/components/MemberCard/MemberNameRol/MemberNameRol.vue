@@ -1,10 +1,10 @@
 <template>
 <div>
-  <figcaption class="font-medium">
-    <div class="text-cyan-600">
+  <figcaption>
+    <div class="text-xl text-green-500 font-semibold">
       {{name}}
     </div>
-    <div class="text-gray-500">
+    <div class="text-gray-800 font-medium">
         {{rol}}
     </div>
   </figcaption>
