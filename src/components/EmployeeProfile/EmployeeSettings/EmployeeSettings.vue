@@ -4,7 +4,8 @@
       <img src="https://images.unsplash.com/photo-1503264116251-35a269479413?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" alt="" class="bg w-full h-full object-cover object-center absolute z-0">
       <div class="flex flex-col justify-center items-center relative h-full bg-black bg-opacity-50 text-white">
         <img :src="require(`@/assets/default-perfil.png`)" class="h-24 w-24 object-cover rounded-full">
-        <h4 class="text-sm font-semibold">Joined Since '19</h4>
+        <h4 class="text-sm font-semibold">{{ username }}</h4>
+        <h4 class="text-sm font-semibold">Joined Since {{ joinedDate }}</h4>
       </div>
     </div>
     <div class="flex bg-white ">
@@ -17,7 +18,7 @@
 
       </div>
       <div class=" w-full px-3 py-6 justify-center flex space-x-4 border-b border-solid md:space-x-0 md:space-y-4 md:flex-col md:col-span-2 md:justify-start" v-if= "type === 'Data'">
-        <EmployeeSettingsData/>
+        <EmployeeSettingsData @EmployeeName="EmployeeNameReceived"/>
       </div>
       <div class="w-full px-3 py-6 justify-center flex space-x-4 border-b border-solid md:space-x-0 md:space-y-4 md:flex-col md:col-span-2 md:justify-start" v-if= "type === 'ChangePassword'">
       <EmployeeSettingsChangePassword/>
@@ -39,7 +40,15 @@ export default {
   },
   data () {
     return {
-      type: 'Data'
+      type: 'Data',
+      username: '',
+      joinedDate: ''
+    }
+  },
+  methods: {
+    EmployeeNameReceived (Username, JoinedDate) {
+      this.username = Username
+      this.joinedDate = JoinedDate
     }
   }
 }

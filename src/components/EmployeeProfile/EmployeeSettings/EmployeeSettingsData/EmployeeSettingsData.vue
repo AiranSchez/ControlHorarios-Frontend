@@ -40,6 +40,7 @@
 
 <script>
 import { getEmployeeData } from '@/domain/services/employeeServices'
+import dayjs from 'dayjs'
 
 export default {
   name: 'EmployeeSettingsData',
@@ -49,13 +50,17 @@ export default {
     }
   },
   mounted () {
-    console.log(localStorage.getItem('EmployeeID'))
     getEmployeeData(localStorage.getItem('EmployeeID')).then(resp => {
       if (resp.status === 200) {
         this.info = resp.data.data
-        console.log(resp)
+        this.sendNameToParent()
       }
     })
+  },
+  methods: {
+    sendNameToParent () {
+      this.$emit('EmployeeName', this.info.User.Username, dayjs(this.info.User.JoinedDate).$y)
+    }
   }
 }
 </script>
