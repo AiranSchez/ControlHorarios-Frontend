@@ -33,6 +33,7 @@ import FormButton from '../FormButton/FormButton'
 import { registerCompany } from '@/domain/services/companiesServices'
 import FormInputPassword from '@/components/Forms/FormInputPassword/FormInputPassword'
 import FormInputEmail from '@/components/Forms/FormInputEmail/FormInputEmail'
+import Vue from 'vue'
 
 export default {
   name: 'RegisterForm',
@@ -51,10 +52,16 @@ export default {
       if (this.checkIfAllFieldsAreValid()) {
         registerCompany(this.data).then(resp => {
           if (resp.status === 201) {
+            Vue.$toast.open('Successfully registered company!')
             this.Error = ''
             localStorage.setItem('CompanyID', resp.data.CompanyID)
             this.$router.push(`/company/profile/${resp.data.CompanyID}`)
           }
+        }).catch(() => {
+          Vue.$toast.open({
+            message: 'Failed to register a company',
+            type: 'error'
+          })
         })
       } else if (this.Error === '') {
         this.Error += 'Missing fields to fill'

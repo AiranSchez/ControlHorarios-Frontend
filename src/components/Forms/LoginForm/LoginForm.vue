@@ -18,6 +18,8 @@ import FormInputEmail from '../FormInputEmail/FormInputEmail'
 import FormInputPassword from '../FormInputPassword/FormInputPassword'
 import FormButton from '../FormButton/FormButton'
 import { loginUser } from '@/domain/services/userServices'
+import Vue from 'vue'
+
 export default {
   name: 'LoginForm',
   components: {
@@ -41,6 +43,7 @@ export default {
         if (resp.status === 200) {
           localStorage.setItem('UserID', resp.data.UserID)
           console.log(resp)
+          Vue.$toast.open('Signed in!')
           if (resp.data.Rol === 'company') {
             this.$router.push(`/company/profile/${resp.data.SecondaryID}`)
             localStorage.setItem('CompanyID', resp.data.SecondaryID)
@@ -51,6 +54,11 @@ export default {
             this.$router.push(`/employee/profile/${resp.data.SecondaryID}`)
           }
         }
+      }).catch(() => {
+        Vue.$toast.open({
+          message: 'Something went wrong!',
+          type: 'error'
+        })
       })
     }
   },

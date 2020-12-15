@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen">
+  <div>
     <div>Company profile</div>
     <header class="w-full bg-regal-blue p-4 flex justify-between items-center">
       <div class="w-8 h-8 cursor-pointer">
@@ -7,7 +7,7 @@
       </div>
     </header>
     <main class="flex w-full h-screen">
-    <aside class="w-80 h-screen bg-gray shadow-md w-fulll hidden sm:block">
+    <aside class="w-80 h-screen bg-gray shadow-md w-full hidden sm:block">
       <div class="flex flex-col justify-between h-screen p-4 bg-gray-800">
         <div class="text-sm">
           <div class="bg-gray-900 text-white p-5 rounded cursor-pointer">Company Name</div>
@@ -23,7 +23,10 @@
     </aside>
     <section class="w-full h-full p-4">
       <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Projects'">Projects</div>
-      <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Calendar'">Calendar</div>
+      <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Calendar'">
+        <CustomCalendar/>
+        <Calendar/>
+      </div>
       <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Employees'">
         <EmployeesList/>
       </div>
@@ -39,12 +42,16 @@
 import EmployeesList from './Employees/EmployeesList/EmployeesList.vue'
 import CreateEmployee from './Employees/CreateEmployee/CreateEmployee.vue'
 import LogoutButton from '../Commons/LogoutButton/LogoutButton.vue'
+import CustomCalendar from './CustomCalendar/CustomCalendar.vue'
+import Calendar from './Calendar/Calendar'
 export default {
   name: 'CompanyProfile',
   components: {
     EmployeesList,
     CreateEmployee,
-    LogoutButton
+    LogoutButton,
+    Calendar,
+    CustomCalendar
   },
   data () {
     return {
