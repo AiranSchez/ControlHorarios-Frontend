@@ -7,7 +7,7 @@
       </div>
     </header>
     <main class="flex w-full h-screen">
-    <aside class="w-80 h-screen bg-gray shadow-md w-full hidden sm:block">
+    <aside class="w-80 h-screen bg-gray shadow-md hidden sm:block">
       <div class="flex flex-col justify-between h-screen p-4 bg-gray-800">
         <div class="text-sm">
           <div class="bg-gray-900 text-white p-5 rounded cursor-pointer">Company Name</div>

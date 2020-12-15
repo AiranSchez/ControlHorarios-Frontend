@@ -18,7 +18,7 @@
 
       </div>
       <div class=" w-full px-3 py-6 justify-center flex space-x-4 border-b border-solid md:space-x-0 md:space-y-4 md:flex-col md:col-span-2 md:justify-start" v-if= "type === 'Data'">
-        <EmployeeSettingsData @EmployeeName="EmployeeNameReceived"/>
+        <EmployeeSettingsData :EmployeeID="EmployeeID" @EmployeeName="EmployeeNameReceived"/>
       </div>
       <div class="w-full px-3 py-6 justify-center flex space-x-4 border-b border-solid md:space-x-0 md:space-y-4 md:flex-col md:col-span-2 md:justify-start" v-if= "type === 'ChangePassword'">
       <EmployeeSettingsChangePassword/>
@@ -42,7 +42,8 @@ export default {
     return {
       type: 'Data',
       username: '',
-      joinedDate: ''
+      joinedDate: '',
+      EmployeeID: localStorage.getItem('EmployeeID')
     }
   },
   methods: {

@@ -49,8 +49,11 @@ export default {
       info: {}
     }
   },
+  props: {
+    EmployeeID: Number
+  },
   mounted () {
-    getEmployeeData(localStorage.getItem('EmployeeID')).then(resp => {
+    getEmployeeData(this.EmployeeID).then(resp => {
       if (resp.status === 200) {
         this.info = resp.data.data
         this.sendNameToParent()
