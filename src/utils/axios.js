@@ -47,4 +47,12 @@ export default class Client {
     }
     return await axios.put(`https://flipday.es/api/employee/${userID}/password`, dto).then(response => response)
   }
+
+  async getHolidays (companyID) {
+    return await axios.get(`https://flipday.es/api/companies/${companyID}/holidays`).then(response => response)
+  }
+
+  async setHolidays (companyID, dto) {
+    return await axios.post(`https://flipday.es/api/companies/${companyID}/holidays`, dto).then(response => response)
+  }
 }

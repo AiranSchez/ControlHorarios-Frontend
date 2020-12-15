@@ -24,6 +24,7 @@
     <section class="w-full h-full p-4">
       <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Projects'">Projects</div>
       <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Calendar'">
+        <CustomCalendar/>
         <Calendar/>
       </div>
       <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Employees'">
@@ -41,6 +42,7 @@
 import EmployeesList from './Employees/EmployeesList/EmployeesList.vue'
 import CreateEmployee from './Employees/CreateEmployee/CreateEmployee.vue'
 import LogoutButton from '../Commons/LogoutButton/LogoutButton.vue'
+import CustomCalendar from './CustomCalendar/CustomCalendar.vue'
 import Calendar from './Calendar/Calendar'
 export default {
   name: 'CompanyProfile',
@@ -48,7 +50,8 @@ export default {
     EmployeesList,
     CreateEmployee,
     LogoutButton,
-    Calendar
+    Calendar,
+    CustomCalendar
   },
   data () {
     return {
