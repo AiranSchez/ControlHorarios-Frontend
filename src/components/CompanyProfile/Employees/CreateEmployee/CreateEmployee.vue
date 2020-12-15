@@ -19,6 +19,7 @@ import FormButton from '../../../Forms/FormButton/FormButton'
 import FormInputEmail from '@/components/Forms/FormInputEmail/FormInputEmail'
 import FormInputPassword from '@/components/Forms/FormInputPassword/FormInputPassword'
 import { createEmployee } from '@/domain/services/companiesServices'
+import Vue from 'vue'
 export default {
   name: 'CreateEmployee',
   components: {
@@ -32,8 +33,13 @@ export default {
       if (this.checkIfAllFieldsAreValid()) {
         createEmployee(this.data, localStorage.getItem('CompanyID')).then(resp => {
           if (resp.status === 201) {
-            console.log('empleado creado')
+            Vue.$toast.open('Successfully created employee!')
           }
+        }).catch(() => {
+          Vue.$toast.open({
+            message: 'Something went wrong!',
+            type: 'error'
+          })
         })
       } else if (this.Error === '') {
         this.Error += 'Missing fields to fill'
