@@ -12,7 +12,7 @@
         <div class="flex flex-col justify-between h-screen p-4 bg-gray-800">
           <div class="text-sm">
             <div class="bg-gray-900 text-white p-5 rounded cursor-pointer">Employee Name</div>
-            <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type = 'Profile'">Profile</div>
+            <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type = 'Time tracking'">Time tracking</div>
             <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type = 'Calendar'">Calendar</div>
             <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type = 'Summary'">Summary</div>
             <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type = 'Settings'">Settings</div>
@@ -23,7 +23,7 @@
         </div>
       </aside>
       <section class="w-full h-full p-4">
-        <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Profile'">
+        <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Time tracking'">
           <div class="w-full items-center justify-center">
             <div class="w-full px-2">
               <div class="bg-white shadow-xl rounded-lg  md:flex">
@@ -88,7 +88,7 @@ export default {
         description: ''
       },
       isCheckedIn: false,
-      type: 'Profile',
+      type: 'Time tracking',
       currentSeconds: '',
       currentMinutes: '',
       currentHours: ''
