@@ -55,4 +55,8 @@ export default class Client {
   async setHolidays (companyID, dto) {
     return await axios.post(`https://flipday.es/api/companies/${companyID}/holidays`, dto).then(response => response)
   }
+
+  async getCompanyData (companyID) {
+    return await axios.get(`https://flipday.es/api/companies/${companyID}`).then(response => response)
+  }
 }

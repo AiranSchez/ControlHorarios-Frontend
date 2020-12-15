@@ -26,6 +26,7 @@
     "v-calendar": "^2.1.2",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
+    "vue-tailwind-modal": "^1.0.5",
     "vue-toast-notification": "^0.6.0"
   },
   "devDependencies": {
