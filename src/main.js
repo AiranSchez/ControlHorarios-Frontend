@@ -4,13 +4,13 @@ import router from './router'
 import './styles/tailwind.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faFontAwesome, faFacebook, faTwitter, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
-import { faTrash, faUserMinus, faUserPlus, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import { faTrash, faUserMinus, faUserPlus, faInfoCircle, faCalendarAlt, faUsers } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import VCalendar from 'v-calendar'
 import VueToast from 'vue-toast-notification'
 import 'vue-toast-notification/dist/theme-sugar.css'
 
-library.add(faFontAwesome, faFacebook, faTwitter, faLinkedin, faGithub, faTrash, faUserMinus, faUserPlus, faInfoCircle)
+library.add(faFontAwesome, faFacebook, faTwitter, faLinkedin, faGithub, faTrash, faUserMinus, faUserPlus, faInfoCircle, faCalendarAlt, faUsers)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

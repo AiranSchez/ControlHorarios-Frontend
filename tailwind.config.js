@@ -16,7 +16,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'regal-blue': '#22223B'
+        indigo: {
+          light: '#b3bcf5',
+          DEFAULT: '#5c6ac4',
+          dark: '#202e78'
+        }
       }
     }
   },
