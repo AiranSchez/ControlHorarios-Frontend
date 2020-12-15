@@ -7,6 +7,8 @@ import { faFontAwesome, faFacebook, faTwitter, faLinkedin, faGithub } from '@for
 import { faTrash, faUserMinus, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import VCalendar from 'v-calendar'
+import VueToast from 'vue-toast-notification'
+import 'vue-toast-notification/dist/theme-sugar.css'
 
 library.add(faFontAwesome, faFacebook, faTwitter, faLinkedin, faGithub, faTrash, faUserMinus, faUserPlus)
 
@@ -14,6 +16,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
 
+Vue.use(VueToast)
 Vue.use(VCalendar, {
   componentPrefix: 'vc' // Use <vc-calendar /> instead of <v-calendar />
 })
