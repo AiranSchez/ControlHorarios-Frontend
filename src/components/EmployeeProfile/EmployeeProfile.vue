@@ -25,8 +25,8 @@
       <section class="w-full h-full p-4">
         <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Profile'">
           <div class="w-full items-center justify-center">
-            <div class="w-full px-2 mt-20">
-              <div class="bg-white shadow-xl rounded-lg overflow-hidden md:flex">
+            <div class="w-full px-2">
+              <div class="bg-white shadow-xl rounded-lg  md:flex">
                 <div class="w-full">
                   <div class="p-4 md:p-5 bg-gray-100 flex justify-around items-center ">
                     <div class="flex items-center w-1/4">
@@ -43,8 +43,7 @@
                     </div>
                     <Timer :check-in-at="checkInAt" :current-time="currentTime"/>
                   </div>
-                  {{ time }}
-                  <EmployeeSummary :records="records"></EmployeeSummary>
+                  <EmployeeSummary :records="records"/>
                 </div>
               </div>
             </div>
@@ -64,14 +63,14 @@
 import Timer from './Timer/Timer'
 import dayjs from 'dayjs'
 import { checkIn, checkOut, getSummary } from '@/domain/services/employeeServices'
-import EmployeeSummary from '@/components/EmployeeProfile/EmployeeSummary/EmployeeSummary'
 import LogoutButton from '../Commons/LogoutButton/LogoutButton.vue'
 import EmployeeSettings from '@/components/EmployeeProfile/EmployeeSettings/EmployeeSettings'
+import EmployeeSummary from '@/components/EmployeeProfile/EmployeeSummary/EmployeeSummary'
 
 export default {
   components: {
-    Timer,
     EmployeeSummary,
+    Timer,
     LogoutButton,
     EmployeeSettings
   },
@@ -85,30 +84,45 @@ export default {
         description: ''
       },
       isCheckedIn: false,
-      type: 'Profile'
+      type: 'Profile',
+      currentSeconds: '',
+      currentMinutes: '',
+      currentHours: ''
     }
   },
   mounted () {
-    this.time = dayjs()
-    const employeeID = localStorage.getItem('EmployeeID')
-    getSummary(employeeID)
-      .then(resp => {
-        resp.forEach(record => {
-          record.StartTime = dayjs(record.StartTime).format('DD/MM/YYYY HH:mm:ss')
-          record.EndTime = dayjs(record.EndTime).format('DD/MM/YYYY HH:mm:ss')
-          this.records.push(record)
-        })
-      })
+    this.getEmployeeRecords()
   },
   methods: {
+    getEmployeeRecords () {
+      const employeeID = localStorage.getItem('EmployeeID')
+      this.records = []
+      getSummary(employeeID)
+        .then(resp => {
+          resp.forEach(record => {
+            record.StartTime = dayjs(record.StartTime).format('DD/MM/YYYY HH:mm:ss')
+            record.EndTime = dayjs(record.EndTime).format('DD/MM/YYYY HH:mm:ss')
+            this.records.push(record)
+          })
+        })
+    },
     chekIn () {
       const employeeID = localStorage.getItem('EmployeeID')
       checkIn(employeeID, this.data).then(resp => { localStorage.setItem('RecordID', resp.recordID) })
-      this.checkInAt = new Date().toLocaleTimeString(navigator.language, { hour: '2-digit', minute: '2-digit', second: '2-digit' })
-      setInterval(() => { this.currentTime = new Date().toLocaleTimeString(navigator.language, { hour: '2-digit', minute: '2-digit', second: '2-digit' }) }, 1000)
+      this.checkInAt = dayjs()
+      setInterval(() => {
+        this.currentSeconds = this.checkInAt.diff(dayjs(), 'second') * (-1)
+        this.currentHours = Math.floor(this.currentSeconds / (60 * 60))
+        this.currentSeconds = this.currentSeconds - (this.currentHours * 60 * 60)
+        this.currentMinutes = Math.floor(this.currentSeconds / 60)
+        this.currentSeconds = this.currentSeconds - (this.currentMinutes * 60)
+        this.currentTime = `${this.currentHours}:${this.currentMinutes}:${this.currentSeconds} `
+      }, 1000)
       this.isCheckedIn = true
+      this.getEmployeeRecords()
     },
     checkOut () {
+      this.getEmployeeRecords()
       const employeeID = localStorage.getItem('EmployeeID')
       const recordID = localStorage.getItem('RecordID')
       checkOut(employeeID, recordID).then(resp => { console.log(resp) })
