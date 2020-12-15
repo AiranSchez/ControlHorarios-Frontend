@@ -12,6 +12,7 @@
 import FormInputPassword from '@/components/Forms/FormInputPassword/FormInputPassword'
 import FormButton from '@/components/Forms/FormButton/FormButton'
 import { updatePassword } from '@/domain/services/employeeServices'
+import Vue from 'vue'
 
 export default {
   name: 'EmployeeSettingsChangePassword',
@@ -47,6 +48,13 @@ export default {
       console.log('change')
       if (this.readyToSend) {
         updatePassword(localStorage.getItem('UserID'), this.newPassword)
+          .then(() => { Vue.$toast.open('Successfully updated password!') })
+          .catch(() => {
+            Vue.$toast.open({
+              message: 'Failed to update password',
+              type: 'error'
+            })
+          })
       }
     }
   }
