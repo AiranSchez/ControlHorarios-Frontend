@@ -52,7 +52,9 @@
         <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Calendar'">
           <CustomCalendar/>
         </div>
-        <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Summary'">Summary</div>
+        <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Summary'">
+          <EmployeeHours/>
+        </div>
         <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md overflow-scroll" v-if= "type === 'Settings'">
           <EmployeeSettings/>
         </div>
@@ -69,9 +71,11 @@ import LogoutButton from '../Commons/LogoutButton/LogoutButton.vue'
 import EmployeeSettings from '@/components/EmployeeProfile/EmployeeSettings/EmployeeSettings'
 import EmployeeSummary from '@/components/EmployeeProfile/EmployeeSummary/EmployeeSummary'
 import CustomCalendar from '@/components/CompanyProfile/CustomCalendar/CustomCalendar'
+import EmployeeHours from '@/components/EmployeeProfile/EmployeeHours/EmployeeHours'
 
 export default {
   components: {
+    EmployeeHours,
     EmployeeSummary,
     Timer,
     LogoutButton,
