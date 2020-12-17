@@ -37,7 +37,7 @@ export default {
         if (dayjs(record.StartTime).format('YYYY-MM-DD') === today) {
           const StartTime = dayjs(record.StartTime)
           const EndTime = dayjs(record.EndTime)
-          const difference = dayjs(EndTime.diff(StartTime)).format('HH:mm:ss')
+          const difference = dayjs(EndTime.diff(StartTime))
           this.hours.push(difference)
         }
       })
