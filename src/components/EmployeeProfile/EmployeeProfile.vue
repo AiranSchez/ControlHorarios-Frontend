@@ -113,8 +113,6 @@ export default {
       getSummary(employeeID)
         .then(resp => {
           resp.forEach(record => {
-            record.StartTime = dayjs(record.StartTime).format('DD/MM/YYYY HH:mm:ss')
-            record.EndTime = dayjs(record.EndTime).format('DD/MM/YYYY HH:mm:ss')
             this.records.push(record)
           })
         })
@@ -144,7 +142,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>
