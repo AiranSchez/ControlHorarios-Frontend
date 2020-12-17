@@ -6,14 +6,15 @@
         <div>Description: {{ value.Description }}</div>
         <div>Start time: {{ value.StartTime }}</div>
         <div>End time: {{ value.EndTime }}</div>
-        <div>Total: {{ timeDifference(value.StartTime,value.EndTime) }}</div>
       </div>
     </div>
+    <div v-for="(value, index) in total" :key="index" >
+        <div >Total: {{ value }}</div>
+      </div>
   </div>
 </template>
 
 <script>
-
 import dayjs from 'dayjs'
 
 export default {
@@ -21,16 +22,18 @@ export default {
   props: {
     records: Array
   },
-  methods: {
-    timeDifference (date1, date2) {
-      const dateStart = dayjs(date1)
-      const dateEnd = dayjs(date2)
-      return dateStart.diff(dateEnd, 'second')
+  mounted () {
+    this.records.forEach(record => {
+      const StartTime = dayjs(record.StartTime)
+      const EndTime = dayjs(record.EndTime)
+      const difference = dayjs(EndTime.diff(StartTime))
+      this.total.push(difference.format('HH:mm:ss'))
+    })
+  },
+  data () {
+    return {
+      total: []
     }
   }
 }
 </script>
-
-<style>
-
-</style>
