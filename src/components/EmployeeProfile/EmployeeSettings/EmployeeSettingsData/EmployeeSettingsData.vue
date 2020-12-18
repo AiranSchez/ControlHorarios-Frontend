@@ -55,7 +55,7 @@ export default {
     EmployeeHours
   },
   props: {
-    EmployeeID: Number
+    EmployeeID: String
   },
   mounted () {
     getEmployeeData(this.EmployeeID).then(resp => {

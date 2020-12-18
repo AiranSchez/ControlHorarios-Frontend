@@ -24,7 +24,6 @@ export default {
     const companyID = localStorage.getItem('CompanyID')
     getEmployees(companyID).then(resp => {
       if (resp.status === 200) {
-        console.log(resp.data.data)
         this.employeesList = resp.data.data
       }
     })

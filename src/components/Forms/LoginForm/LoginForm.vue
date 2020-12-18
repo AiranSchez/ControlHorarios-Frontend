@@ -42,7 +42,6 @@ export default {
       loginUser(this.data).then(resp => {
         if (resp.status === 200) {
           localStorage.setItem('UserID', resp.data.UserID)
-          console.log(resp)
           Vue.$toast.open('Signed in!')
           if (resp.data.Rol === 'company') {
             this.$router.push(`/company/profile/${resp.data.SecondaryID}`)

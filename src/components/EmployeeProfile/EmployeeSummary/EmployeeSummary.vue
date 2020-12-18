@@ -1,14 +1,20 @@
 <template>
   <div>
-    <div class="flex flex-col">
-      <div class="flex justify-around">
-        <div class="max-w-lg">Description</div>
-        <div class="max-w-lg">Start time</div>
-        <div class="max-w-lg">End time</div>
-        <div class="max-w-lg">Total</div>
+    <div class="table w-full">
+      <div class="table-row-group text-center font-bold ">
+        <div class="table-row">
+          <div class="table-cell">Description</div>
+          <div class="table-cell">Start time</div>
+          <div class="table-cell">End time</div>
+          <div class="table-cell">Total</div>
+        </div>
       </div>
-      <div v-for="(formattedRecord, index) in formattedRecords" :key="index" >
-        <EmployeeRecord :description="formattedRecord.record.Description" :startTime="formattedRecord.record.StartTime" :endTime="formattedRecord.record.EndTime" :total="formattedRecord.total"/>
+      <div v-for="(formattedRecord, index) in formattedRecords.reverse()" :key="index" class="table-row-group text-center">
+        <EmployeeRecord
+            :description="formattedRecord.record.Description"
+            :startTime="formattedRecord.record.StartTime"
+            :endTime="formattedRecord.record.EndTime"
+            :total="formattedRecord.total"/>
       </div>
     </div>
   </div>
@@ -24,11 +30,9 @@ export default {
     EmployeeRecord
   },
   props: {
-    records: Array,
-    clicked: Boolean
+    records: Array
   },
   mounted () {
-    console.log(this.records.length)
     this.records.forEach(record => {
       const StartTime = dayjs(record.StartTime)
       const EndTime = dayjs(record.EndTime)
@@ -41,13 +45,6 @@ export default {
         total: this.total[i]
       }
       this.formattedRecords.push(formattedRecord)
-    }
-  },
-  methods: {
-    isClicked () {
-      if (this.clicked) {
-        this.$forceUpdate()
-      }
     }
   },
   data () {
