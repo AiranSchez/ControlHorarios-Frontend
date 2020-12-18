@@ -1,4 +1,4 @@
-import '../../../../styles/tailwind.css'
+import '../../../../styles/tailwind.source.css'
 import MemberNameRol from '@/components/MemberCard/MemberNameRol/MemberNameRol'
 
 export default {

@@ -1,4 +1,4 @@
-import '../../../../styles/tailwind.css'
+import '../../../../styles/tailwind.source.css'
 import FormButton from '@/components/Forms/FormButton/FormButton'
 
 export default {

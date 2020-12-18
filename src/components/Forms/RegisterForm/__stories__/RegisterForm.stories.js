@@ -1,4 +1,4 @@
-import '../../../../styles/tailwind.css'
+import '../../../../styles/tailwind.source.css'
 import RegisterForm from '@/components/Forms/RegisterForm/RegisterForm'
 
 export default {
