@@ -23,7 +23,7 @@
       </td>
       <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 w-40">
         <IconButton name="info-circle" color="blue" @click.native="showInfo(true)"/>
-        <VueTailwindModal :showing= "info" @close="showInfo(false)" :showClose="true" :backgroundClose="true">
+        <VueTailwindModal :showing= "info" @close="showInfo(false)" :showClose="true" :backgroundClose="true" class="bg-grey-200">
           <EmployeeSettingsData :EmployeeID="employeeID" />
         </VueTailwindModal>
       </td>
