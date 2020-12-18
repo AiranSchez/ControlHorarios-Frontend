@@ -21,7 +21,7 @@ export default {
   mounted () {
     getSummary(this.employeeID)
       .then(resp => {
-        resp.forEach(record => {
+        resp.data.data.forEach(record => {
           this.records.push(record)
         })
         this.calculateDayHours()
@@ -37,7 +37,8 @@ export default {
           const EndTime = dayjs(record.EndTime)
           const difference = dayjs(EndTime.diff(StartTime))
           this.hours.push(difference)
-        } else if (dayjs(record.StartTime).format('YYYY-MM') === month) {
+        }
+        if (dayjs(record.StartTime).format('YYYY-MM') === month) {
           const StartTime = dayjs(record.StartTime)
           const EndTime = dayjs(record.EndTime)
           const difference = dayjs(EndTime.diff(StartTime))
@@ -47,21 +48,17 @@ export default {
       this.daily = this.sumTime(this.hours)
       this.monthly = this.sumTime(this.monthHours)
     },
-    setDailyTime (time) {
-      this.daily = time
-    },
     sumTime (hours) {
-      let totalMonthlyTime = dayjs.duration(0)
-
+      let totalTime = dayjs.duration(0)
       hours.forEach(time => {
         const duration = dayjs.duration({
           seconds: time.get('second'),
           minutes: time.get('minute'),
           hours: time.get('hour')
         })
-        totalMonthlyTime = duration.add(totalMonthlyTime)
+        totalTime = duration.add(totalTime)
       })
-      return dayjs(totalMonthlyTime.asMilliseconds()).format('HH:mm:ss')
+      return dayjs(totalTime.asMilliseconds()).format('HH:mm:ss')
     }
   },
   data () {
