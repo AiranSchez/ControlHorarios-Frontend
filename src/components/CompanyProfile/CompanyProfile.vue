@@ -10,9 +10,6 @@
     <aside class="w-80 h-screen bg-gray shadow-md hidden sm:block">
       <div class="flex flex-col justify-between h-screen p-4 bg-gray-800">
         <div class="text-sm">
-          <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type='Projects'">
-            Projects
-          </div>
           <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type='Calendar'">
             <font-awesome-icon :icon="{ prefix: 'fas', iconName:'calendar-alt'}"/>
             Calendar
@@ -31,7 +28,6 @@
       </div>
     </aside>
     <section class="w-full p-4">
-      <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Projects'">Projects</div>
       <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Calendar'">
         <CustomCalendar/>
         <Calendar/>
@@ -66,7 +62,7 @@ export default {
   },
   data () {
     return {
-      type: '',
+      type: 'Employees',
       companyName: ''
     }
   },

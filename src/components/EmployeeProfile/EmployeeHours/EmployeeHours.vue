@@ -15,9 +15,11 @@ dayjs.extend(duration)
 
 export default {
   name: 'EmployeeHours',
+  props: {
+    employeeID: String
+  },
   mounted () {
-    const employeeID = localStorage.getItem('EmployeeID')
-    getSummary(employeeID)
+    getSummary(this.employeeID)
       .then(resp => {
         resp.forEach(record => {
           this.records.push(record)

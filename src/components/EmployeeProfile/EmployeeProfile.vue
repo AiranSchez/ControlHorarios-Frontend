@@ -31,7 +31,7 @@
                   <div class="p-4 md:p-5 bg-gray-100 flex justify-around items-center ">
                     <div class="flex items-center w-1/4">
                       <div v-if="!isCheckedIn">
-                        <button v-on:click="chekIn" class="py-2 px-5 bg-indigo-700 hover:bg-indigo-300 font-bold text-white rounded-lg shadow-md">Check in</button>
+                        <button v-on:click="checkIn" class="py-2 px-5 bg-indigo-700 hover:bg-indigo-300 font-bold text-white rounded-lg shadow-md">Check in</button>
                       </div>
                       <div v-else>
                         <button v-on:click="checkOut" class="ml-5 py-2 px-5 bg-red-700 hover:bg-red-300 font-bold text-white rounded-lg shadow-md">Check out</button>
@@ -43,7 +43,7 @@
                     </div>
                     <Timer :check-in-at="checkInAt" :current-time="currentTime"/>
                   </div>
-                  <EmployeeSummary :records="records"/>
+                  <EmployeeSummary :records="records" :clicked="isCheckedIn"/>
                 </div>
               </div>
             </div>
@@ -53,7 +53,7 @@
           <CustomCalendar/>
         </div>
         <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Summary'">
-          <EmployeeHours/>
+          <EmployeeHours :employeeID="employeeID"/>
         </div>
         <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md overflow-scroll" v-if= "type === 'Settings'">
           <EmployeeSettings/>
@@ -84,6 +84,7 @@ export default {
   },
   data () {
     return {
+      employeeID: localStorage.getItem('EmployeeID'),
       checkInAt: '',
       currentTime: '',
       time: '',
@@ -95,7 +96,8 @@ export default {
       type: 'Time tracking',
       currentSeconds: '',
       currentMinutes: '',
-      currentHours: ''
+      currentHours: '',
+      intervalID: 0
     }
   },
   mounted () {
@@ -117,26 +119,29 @@ export default {
           })
         })
     },
-    chekIn () {
+    checkIn () {
       const employeeID = localStorage.getItem('EmployeeID')
       checkIn(employeeID, this.data).then(resp => { localStorage.setItem('RecordID', resp.recordID) })
       this.checkInAt = dayjs()
-      setInterval(() => {
-        this.currentSeconds = this.checkInAt.diff(dayjs(), 'second') * (-1)
+      this.startTimer(this.checkInAt)
+      this.isCheckedIn = true
+      this.getEmployeeRecords()
+    },
+    startTimer (initialHour) {
+      this.intervalID = setInterval(() => {
+        this.currentSeconds = initialHour.diff(dayjs(), 'second') * (-1)
         this.currentHours = Math.floor(this.currentSeconds / (60 * 60))
         this.currentSeconds = this.currentSeconds - (this.currentHours * 60 * 60)
         this.currentMinutes = Math.floor(this.currentSeconds / 60)
         this.currentSeconds = this.currentSeconds - (this.currentMinutes * 60)
         this.currentTime = `${this.currentHours}:${this.currentMinutes}:${this.currentSeconds} `
       }, 1000)
-      this.isCheckedIn = true
-      this.getEmployeeRecords()
     },
     checkOut () {
       this.getEmployeeRecords()
       const employeeID = localStorage.getItem('EmployeeID')
       const recordID = localStorage.getItem('RecordID')
-      checkOut(employeeID, recordID).then(resp => { console.log(resp) })
+      checkOut(employeeID, recordID).then(resp => { clearInterval(this.intervalID) })
       this.isCheckedIn = false
     }
   }

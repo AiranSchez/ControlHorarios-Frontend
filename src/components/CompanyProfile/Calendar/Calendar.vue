@@ -1,9 +1,6 @@
 <template>
   <div>
     <vc-calendar ref="calendar" :attributes="attributes" @dayclick="onDayClick" :popover="{ visibility: 'click' }"/>
-    <div v-for="(day,index) in days" :key="index">
-      {{ day }}
-    </div>
     <FormInput label="Holiday title" placeholder="Your holiday title" id="holiday-input" v-on:fieldValue="receivedValue" />
     <FormButton @isClicked="addHoliday" value="Add holiday"/>
   </div>

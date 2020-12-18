@@ -10,7 +10,7 @@
 <script>
 export default {
   props: {
-    checkInAt: String,
+    checkInAt: Object,
     currentTime: String
   }
 }

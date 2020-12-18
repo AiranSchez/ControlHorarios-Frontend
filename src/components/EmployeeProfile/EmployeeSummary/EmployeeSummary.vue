@@ -1,38 +1,59 @@
 <template>
   <div>
-    <div>Employee Summary</div>
-    <div v-for="(value, index) in records" :key="index" class="flex">
-      <div class="flex w-full justify-around">
-        <div>Description: {{ value.Description }}</div>
-        <div>Start time: {{ value.StartTime }}</div>
-        <div>End time: {{ value.EndTime }}</div>
+    <div class="flex flex-col">
+      <div class="flex justify-around">
+        <div class="max-w-lg">Description</div>
+        <div class="max-w-lg">Start time</div>
+        <div class="max-w-lg">End time</div>
+        <div class="max-w-lg">Total</div>
+      </div>
+      <div v-for="(formattedRecord, index) in formattedRecords" :key="index" >
+        <EmployeeRecord :description="formattedRecord.record.Description" :startTime="formattedRecord.record.StartTime" :endTime="formattedRecord.record.EndTime" :total="formattedRecord.total"/>
       </div>
     </div>
-    <div v-for="(value, index) in total" :key="index" >
-        <div >Total: {{ value }}</div>
-      </div>
   </div>
 </template>
 
 <script>
 import dayjs from 'dayjs'
+import EmployeeRecord from '@/components/EmployeeProfile/EmployeeRecord/EmployeeRecord'
 
 export default {
   name: 'EmployeeSummary',
+  components: {
+    EmployeeRecord
+  },
   props: {
-    records: Array
+    records: Array,
+    clicked: Boolean
   },
   mounted () {
+    console.log(this.records.length)
     this.records.forEach(record => {
       const StartTime = dayjs(record.StartTime)
       const EndTime = dayjs(record.EndTime)
       const difference = dayjs(EndTime.diff(StartTime))
       this.total.push(difference.format('HH:mm:ss'))
     })
+    for (let i = 0; i < this.records.length; i++) {
+      const formattedRecord = {
+        record: this.records[i],
+        total: this.total[i]
+      }
+      this.formattedRecords.push(formattedRecord)
+    }
+  },
+  methods: {
+    isClicked () {
+      if (this.clicked) {
+        this.$forceUpdate()
+      }
+    }
   },
   data () {
     return {
-      total: []
+      total: [],
+      formattedRecords: []
     }
   }
 }

@@ -32,6 +32,7 @@
           <div class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2  mr-2 focus:outline-none focus:shadow-outline focus:border-blue-200">
             {{ info.Company.CompanyName }}
           </div>
+          <EmployeeHours :employeeID="EmployeeID"/>
         </div>
       </div>
     </div>
@@ -41,6 +42,7 @@
 <script>
 import { getEmployeeData } from '@/domain/services/employeeServices'
 import dayjs from 'dayjs'
+import EmployeeHours from '@/components/EmployeeProfile/EmployeeHours/EmployeeHours'
 
 export default {
   name: 'EmployeeSettingsData',
@@ -48,6 +50,9 @@ export default {
     return {
       info: {}
     }
+  },
+  components: {
+    EmployeeHours
   },
   props: {
     EmployeeID: Number
