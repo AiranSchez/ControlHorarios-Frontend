@@ -3,7 +3,7 @@
     <div class="pt-4 pb-4 flex bg-gray-900 justify-evenly">
       <img src="../../assets/flipday.png" alt="Flipday logo" width="100" height="100">
       <div class="text-white flex flex-col justify-center items-center">
-        <div class="text-white text-center">©Copyright all rights reserved to Flipday Team</div>
+        <div class="text-white text-center">© Copyright all rights reserved to Flipday Team</div>
       </div>
       <div class="text-white flex flex-col items-center justify-center">
         <div>

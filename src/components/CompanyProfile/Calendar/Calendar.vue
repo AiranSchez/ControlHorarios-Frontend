@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex flex-col">
     <vc-calendar ref="calendar" :attributes="attributes" @dayclick="onDayClick" :popover="{ visibility: 'click' }"/>
     <FormInput label="Holiday title" placeholder="Your holiday title" id="holiday-input" v-on:fieldValue="receivedValue" />
     <FormButton @isClicked="addHoliday" value="Add holiday"/>
@@ -56,6 +56,8 @@ export default {
           Date: day.id
         }
         setHolidays(companyID, dto).then(resp => console.log(resp))
+
+        this.$emit('addedHoliday')
       })
     }
   }
