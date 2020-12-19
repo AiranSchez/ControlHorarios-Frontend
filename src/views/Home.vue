@@ -31,16 +31,20 @@
     </div>
     <img src="../assets/Home-picture-3.jpg" alt="Meeting Picture" />
     <Members/>
+    <Footer/>
   </div>
 </template>
 <script>
 import Members from '../components/MemberCard/Members/Members'
 import Header from '@/components/Header/Header'
+import Footer from '../components/Footer/Footer'
+
 export default {
   name: 'Home',
   components: {
     Members,
-    Header
+    Header,
+    Footer
   }
 }
 </script>
