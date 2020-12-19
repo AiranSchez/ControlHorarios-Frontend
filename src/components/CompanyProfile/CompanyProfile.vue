@@ -18,13 +18,14 @@
           </div>
           <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type='CreateEmployee'">
             <font-awesome-icon :icon="{ prefix: 'fas', iconName:'user-plus'}"/>
-            Create Employee</div>
-        </div>
-        <div class="flex p-3 text-white bg-red-500 rounded cursor-pointer text-center text-sm">
-         <LogoutButton/>
-        </div>
+            Create Employee
+          </div>
+          </div>
+          <div class="p-3 text-white bg-red-500 rounded cursor-pointer text-center justify-self-end text-sm">
+            <LogoutButton/>
+          </div>
       </div>
-    </aside>
+      </aside>
     <section class="w-full p-4">
       <div class="p-4 text-md flex flex-col" v-if= "type === 'Calendar'">
         <CustomCalendar class="pb-4" :key="holidayKey"/>

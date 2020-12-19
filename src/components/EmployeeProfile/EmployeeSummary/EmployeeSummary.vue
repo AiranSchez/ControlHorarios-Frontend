@@ -4,6 +4,7 @@
       <div class="table-row-group text-center font-bold ">
         <div class="table-row">
           <div class="table-cell">Description</div>
+          <div class="table-cell">Date</div>
           <div class="table-cell">Start time</div>
           <div class="table-cell">End time</div>
           <div class="table-cell">Total</div>
