@@ -1,6 +1,7 @@
 <template>
     <div class="w-2/5">
-        <div class="p-10 border-2 border-gray-900 bg-white mb-6 rounded-lg shadow-xl">
+        <div class=" flex flex-col p-10 bg-white mb-6 rounded-lg shadow-2xl">
+            <img class="self-center h-14 w-14" src="../../../assets/flipday.png" alt="Logo">
             <h1 class="mb-8 text-3xl text-center">Sign Up ;)</h1>
             <FormInput label="Name" placeholder="Your name" id="forminput-name" v-on:fieldValue="nameReceived"/>
             <FormInputEmail label="Email" placeholder="Email" id="forminput-email" v-on:fieldValue="emailReceived" />

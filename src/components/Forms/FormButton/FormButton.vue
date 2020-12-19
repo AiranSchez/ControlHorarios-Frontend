@@ -1,5 +1,5 @@
 <template>
-    <div class="flex justify-center">
+    <div class="flex justify-center cursor-pointer">
         <div @click="isClicked()" class="justify-center inline-flex w-3/6 rounded-md bg-green-700 shadow-xl hover:bg-green-800 ">
             <a href="#" class="font-bold py-2 px-6 text-white rounded-md">{{ value}}</a>
         </div>

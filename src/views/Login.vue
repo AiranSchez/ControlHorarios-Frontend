@@ -1,6 +1,6 @@
 <template>
       <div class="bg-white-300">
-        <div class="bg-grey-lighter h-screen flex justify-center">
+        <div class="h-screen flex justify-center bg-gradient-to-r from-green-400 to-blue-500">
           <div class="container h-full flex justify-center items-center">
               <LoginForm/>
         </div>
