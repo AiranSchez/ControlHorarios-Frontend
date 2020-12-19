@@ -1,7 +1,7 @@
 <template>
 
   <div>
-    <main class="flex w-full h-full">
+    <main class="flex w-full min-h-screen">
       <aside class="w-80 bg-gray shadow-md hidden sm:block">
         <header class="w-full p-8 flex justify-between items-center bg-gray-900">
           <img class="rounded-full bg-white w-12 h-12" src="https://cdn3.f-cdn.com/contestentries/1376995/30494909/5b566bc71d308_thumb900.jpg"  alt="employeeImage"/>

@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-full">
-    <main class="flex w-full h-full">
+    <main class="flex w-full min-h-screen">
     <aside class="w-80 bg-gray shadow-md hidden sm:block">
       <header class="w-full p-8 flex justify-evenly items-center bg-gray-900">
         <img class="rounded-full bg-white w-12 h-12" src="https://cdn.shopify.com/shopifycloud/hatchful-web/assets/67cbe9b74baf7f893488c5fc426d31eb.png"  alt="employeeImage"/>
