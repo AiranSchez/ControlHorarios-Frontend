@@ -1,4 +1,4 @@
-import '../../../../styles/tailwind.css'
+import '../../../../styles/tailwind.source.css'
 import LoginForm from '@/components/Forms/LoginForm/LoginForm'
 
 export default {

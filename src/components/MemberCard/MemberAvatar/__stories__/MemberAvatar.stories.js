@@ -1,4 +1,4 @@
-import '../../../../styles/tailwind.css'
+import '../../../../styles/tailwind.source.css'
 import MemberAvatar from '@/components/MemberCard/MemberAvatar/MemberAvatar'
 
 export default {

@@ -45,7 +45,6 @@ export default {
       }
     },
     changePassword () {
-      console.log('change')
       if (this.readyToSend) {
         updatePassword(localStorage.getItem('UserID'), this.newPassword)
           .then(() => { Vue.$toast.open('Successfully updated password!') })

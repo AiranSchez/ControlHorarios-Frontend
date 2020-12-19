@@ -1,4 +1,4 @@
-import '../../../../../styles/tailwind.css'
+import '../../../../../styles/tailwind.source.css'
 import CreateEmployee from '@/components/CompanyProfile/Employees/CreateEmployee/CreateEmployee'
 
 export default {
