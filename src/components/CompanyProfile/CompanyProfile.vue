@@ -7,8 +7,8 @@
       </div>
     </header>
     <main class="flex w-full h-full">
-    <aside class="w-80 h-screen bg-gray shadow-md hidden sm:block">
-      <div class="flex flex-col justify-between h-screen p-4 bg-gray-800">
+    <aside class="w-80 bg-gray shadow-md hidden sm:block">
+      <div class="flex flex-col justify-between h-full p-4 bg-gray-800">
         <div class="text-sm">
           <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type='Calendar'">
             <font-awesome-icon :icon="{ prefix: 'fas', iconName:'calendar-alt'}"/>
