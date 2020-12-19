@@ -1,9 +1,11 @@
 <template>
-    <table class="w-full text-left bg-white">
+<div class="flex">
+  <table class="text-left bg-white w-full">
         <tbody v-for="employee in employeesList" v-bind:key="employee">
             <EmployeeInfo :userID="employee.UserID" :employeeID="employee.EmployeeID" :firstName="employee.FirstName" :lastName="employee.LastName" :email="employee.User.Email" :isEnabled="employee.User.Status"/>
         </tbody>
     </table>
+</div>
 </template>
 
 <script>

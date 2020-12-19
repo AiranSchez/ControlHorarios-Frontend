@@ -10,18 +10,14 @@
       <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 w-80">
           <div class="text-sm leading-5 text-gray-500">{{ email }}</div>
       </td>
-      <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 w-40">
-          <div class="text-sm leading-5 text-gray-500">SectionValue</div>
-      </td>
-
-      <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 w-40">
+      <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 w-60">
           <IsEmployeeActive :isActive="isUserActive"/>
       </td>
       <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
           <IconButton v-if="isUserActive" name="user-minus" color="red" @click.native="disableEmployee(userID)"/>
           <IconButton v-else name="user-plus" color="green" @click.native="enableEmployee(userID)"/>
       </td>
-      <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 w-40">
+      <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 w-60">
         <IconButton name="info-circle" color="blue" @click.native="showInfo(true)"/>
         <VueTailwindModal :showing= "info" @close="showInfo(false)" :showClose="true" :backgroundClose="true" class="bg-grey-200">
           <EmployeeSettingsData :EmployeeID="employeeID" />
