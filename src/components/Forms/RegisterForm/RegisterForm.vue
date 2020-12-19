@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+    <div class="w-2/5">
+        <div class="p-10 border-2 border-gray-900 bg-white mb-6 rounded-lg shadow-xl">
             <h1 class="mb-8 text-3xl text-center">Sign Up ;)</h1>
             <FormInput label="Name" placeholder="Your name" id="forminput-name" v-on:fieldValue="nameReceived"/>
             <FormInputEmail label="Email" placeholder="Email" id="forminput-email" v-on:fieldValue="emailReceived" />
@@ -22,7 +22,7 @@
         </div>
         <div class="flex justify-center flex-row items-center">
             <div class="text-grey-dark text-sm">Already have an account?</div>
-            <div @click="redirectToLogin()" class="hover:no-underline underline pl-0 text-blue font-bold">Log in</div>
+            <div @click="redirectToLogin()" class="hover:no-underline underline pl-0 text-blue-800 font-bold"> Sing in</div>
         </div>
     </div>
 </template>
