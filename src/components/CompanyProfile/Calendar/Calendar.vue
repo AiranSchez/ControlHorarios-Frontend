@@ -1,9 +1,6 @@
 <template>
   <div>
     <vc-calendar ref="calendar" :attributes="attributes" @dayclick="onDayClick" :popover="{ visibility: 'click' }"/>
-    <div v-for="(day,index) in days" :key="index">
-      {{ day }}
-    </div>
     <FormInput label="Holiday title" placeholder="Your holiday title" id="holiday-input" v-on:fieldValue="receivedValue" />
     <FormButton @isClicked="addHoliday" value="Add holiday"/>
   </div>
@@ -41,7 +38,6 @@ export default {
       this.title = field
     },
     onDayClick (day) {
-      console.log(this.days)
       const idx = this.days.findIndex(d => d.id === day.id)
       if (idx >= 0) {
         this.days.splice(idx, 1)
@@ -54,7 +50,6 @@ export default {
     },
     addHoliday () {
       this.days.forEach(day => {
-        console.log(day.id)
         const companyID = localStorage.getItem('CompanyID')
         const dto = {
           Title: this.title,

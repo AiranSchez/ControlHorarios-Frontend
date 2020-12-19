@@ -1,4 +1,4 @@
-import '../../../../styles/tailwind.css'
+import '../../../../styles/tailwind.source.css'
 import FormInputPassword from '@/components/Forms/FormInputPassword/FormInputPassword'
 
 export default {

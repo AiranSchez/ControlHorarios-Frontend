@@ -1,36 +1,57 @@
 <template>
   <div>
-    <div>Employee Summary</div>
-    <div v-for="(value, index) in records" :key="index" class="flex">
-      <div class="flex w-full justify-around">
-        <div>Description: {{ value.Description }}</div>
-        <div>Start time: {{ value.StartTime }}</div>
-        <div>End time: {{ value.EndTime }}</div>
-        <div>Total: {{ timeDifference(value.StartTime,value.EndTime) }}</div>
+    <div class="table w-full">
+      <div class="table-row-group text-center font-bold ">
+        <div class="table-row">
+          <div class="table-cell">Description</div>
+          <div class="table-cell">Start time</div>
+          <div class="table-cell">End time</div>
+          <div class="table-cell">Total</div>
+        </div>
+      </div>
+      <div v-for="(formattedRecord, index) in formattedRecords.reverse()" :key="index" class="table-row-group text-center">
+        <EmployeeRecord
+            :description="formattedRecord.record.Description"
+            :startTime="formattedRecord.record.StartTime"
+            :endTime="formattedRecord.record.EndTime"
+            :total="formattedRecord.total"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-
 import dayjs from 'dayjs'
+import EmployeeRecord from '@/components/EmployeeProfile/EmployeeRecord/EmployeeRecord'
 
 export default {
   name: 'EmployeeSummary',
+  components: {
+    EmployeeRecord
+  },
   props: {
     records: Array
   },
-  methods: {
-    timeDifference (date1, date2) {
-      const dateStart = dayjs(date1)
-      const dateEnd = dayjs(date2)
-      return dateStart.diff(dateEnd, 'second')
+  mounted () {
+    this.records.forEach(record => {
+      const StartTime = dayjs(record.StartTime)
+      const EndTime = dayjs(record.EndTime)
+      const difference = dayjs(EndTime.diff(StartTime))
+      this.total.push(difference.format('HH:mm:ss'))
+    })
+    for (let i = 0; i < this.records.length; i++) {
+      const formattedRecord = {
+        record: this.records[i],
+        total: this.total[i]
+      }
+      this.formattedRecords.push(formattedRecord)
+    }
+  },
+  data () {
+    return {
+      total: [],
+      formattedRecords: []
     }
   }
 }
 </script>
-
-<style>
-
-</style>

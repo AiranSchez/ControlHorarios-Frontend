@@ -1,4 +1,4 @@
-import '../../../../styles/tailwind.css'
+import '../../../../styles/tailwind.source.css'
 import FormInputEmail from '@/components/Forms/FormInputEmail/FormInputEmail'
 
 export default {

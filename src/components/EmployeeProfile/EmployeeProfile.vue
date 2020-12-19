@@ -9,21 +9,32 @@
     </header>
     <main class="flex w-full ">
       <aside class="w-80 bg-gray shadow-md hidden sm:block">
-        <div class="flex flex-col justify-between h-screen p-4 bg-gray-800">
+        <div class="flex flex-col justify-between h-full min-h-screen p-4 bg-gray-800">
           <div class="text-sm">
-            <div class="bg-gray-900 text-white p-5 rounded cursor-pointer">Employee Name</div>
-            <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type = 'Time tracking'">Time tracking</div>
-            <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type = 'Calendar'">Calendar</div>
-            <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type = 'Summary'">Summary</div>
-            <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type = 'Settings'">Settings</div>
+            <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type = 'Time tracking'">
+              <font-awesome-icon :icon="{ prefix: 'fas', iconName:'clock'}"/>
+              Time tracking
+            </div>
+            <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type = 'Calendar'">
+              <font-awesome-icon :icon="{ prefix: 'fas', iconName:'calendar-alt'}"/>
+              Calendar
+            </div>
+            <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type = 'Summary'">
+              <font-awesome-icon :icon="{ prefix: 'fas', iconName:'list'}"/>
+              Summary
+            </div>
+            <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type = 'Settings'">
+              <font-awesome-icon :icon="{ prefix: 'fas', iconName:'cog'}"/>
+              Settings
+            </div>
           </div>
           <div class="flex p-3 text-white bg-red-500 rounded cursor-pointer text-center text-sm">
             <LogoutButton/>
           </div>
         </div>
       </aside>
-      <section class="w-full h-full p-4">
-        <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Time tracking'">
+      <section class="w-full h-full px-4 pb-4">
+        <div class="w-full h-full h-64 text-md" v-if= "type === 'Time tracking'">
           <div class="w-full items-center justify-center">
             <div class="w-full px-2">
               <div class="bg-white shadow-xl rounded-lg  md:flex">
@@ -31,7 +42,7 @@
                   <div class="p-4 md:p-5 bg-gray-100 flex justify-around items-center ">
                     <div class="flex items-center w-1/4">
                       <div v-if="!isCheckedIn">
-                        <button v-on:click="chekIn" class="py-2 px-5 bg-indigo-700 hover:bg-indigo-300 font-bold text-white rounded-lg shadow-md">Check in</button>
+                        <button v-on:click="checkIn" class="py-2 px-5 bg-indigo-700 hover:bg-indigo-300 font-bold text-white rounded-lg shadow-md">Check in</button>
                       </div>
                       <div v-else>
                         <button v-on:click="checkOut" class="ml-5 py-2 px-5 bg-red-700 hover:bg-red-300 font-bold text-white rounded-lg shadow-md">Check out</button>
@@ -43,17 +54,17 @@
                     </div>
                     <Timer :check-in-at="checkInAt" :current-time="currentTime"/>
                   </div>
-                  <EmployeeSummary :records="records"/>
+                  <EmployeeSummary :records="records" :key="rerender"/>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Calendar'">
+        <div class=" w-full h-full h-64 px-40 text-md" v-if= "type === 'Calendar'">
           <CustomCalendar/>
         </div>
         <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md" v-if= "type === 'Summary'">
-          <EmployeeHours/>
+          <EmployeeHours :employeeID="employeeID"/>
         </div>
         <div class="w-full h-full h-64 border-dashed border-4 p-4 text-md overflow-scroll" v-if= "type === 'Settings'">
           <EmployeeSettings/>
@@ -72,6 +83,7 @@ import EmployeeSettings from '@/components/EmployeeProfile/EmployeeSettings/Empl
 import EmployeeSummary from '@/components/EmployeeProfile/EmployeeSummary/EmployeeSummary'
 import CustomCalendar from '@/components/CompanyProfile/CustomCalendar/CustomCalendar'
 import EmployeeHours from '@/components/EmployeeProfile/EmployeeHours/EmployeeHours'
+import Vue from 'vue'
 
 export default {
   components: {
@@ -84,7 +96,8 @@ export default {
   },
   data () {
     return {
-      checkInAt: '',
+      employeeID: localStorage.getItem('EmployeeID'),
+      checkInAt: {},
       currentTime: '',
       time: '',
       records: [],
@@ -95,7 +108,9 @@ export default {
       type: 'Time tracking',
       currentSeconds: '',
       currentMinutes: '',
-      currentHours: ''
+      currentHours: '',
+      intervalID: 0,
+      rerender: false
     }
   },
   mounted () {
@@ -112,39 +127,48 @@ export default {
       this.records = []
       getSummary(employeeID)
         .then(resp => {
-          resp.forEach(record => {
-            record.StartTime = dayjs(record.StartTime).format('DD/MM/YYYY HH:mm:ss')
-            record.EndTime = dayjs(record.EndTime).format('DD/MM/YYYY HH:mm:ss')
-            this.records.push(record)
-          })
+          if (resp.status === 200) {
+            resp.data.data.forEach(record => {
+              this.records.push(record)
+            })
+            this.rerender = !this.rerender
+          }
         })
     },
-    chekIn () {
+    checkIn () {
       const employeeID = localStorage.getItem('EmployeeID')
       checkIn(employeeID, this.data).then(resp => { localStorage.setItem('RecordID', resp.recordID) })
       this.checkInAt = dayjs()
-      setInterval(() => {
-        this.currentSeconds = this.checkInAt.diff(dayjs(), 'second') * (-1)
+      this.startTimer(this.checkInAt)
+      this.isCheckedIn = true
+      Vue.$toast.open({
+        message: 'Checked in!',
+        type: 'info'
+      })
+    },
+    startTimer (initialHour) {
+      this.intervalID = setInterval(() => {
+        this.currentSeconds = initialHour.diff(dayjs(), 'second') * (-1)
         this.currentHours = Math.floor(this.currentSeconds / (60 * 60))
         this.currentSeconds = this.currentSeconds - (this.currentHours * 60 * 60)
         this.currentMinutes = Math.floor(this.currentSeconds / 60)
         this.currentSeconds = this.currentSeconds - (this.currentMinutes * 60)
         this.currentTime = `${this.currentHours}:${this.currentMinutes}:${this.currentSeconds} `
       }, 1000)
-      this.isCheckedIn = true
-      this.getEmployeeRecords()
     },
     checkOut () {
-      this.getEmployeeRecords()
       const employeeID = localStorage.getItem('EmployeeID')
       const recordID = localStorage.getItem('RecordID')
-      checkOut(employeeID, recordID).then(resp => { console.log(resp) })
+      checkOut(employeeID, recordID).then(resp => {
+        clearInterval(this.intervalID)
+        this.getEmployeeRecords()
+      })
       this.isCheckedIn = false
+      Vue.$toast.open({
+        message: 'Checked out!',
+        type: 'info'
+      })
     }
   }
 }
 </script>
-
-<style>
-
-</style>

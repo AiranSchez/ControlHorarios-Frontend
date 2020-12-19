@@ -19,8 +19,7 @@ export const checkOut = async (userID, recordID) => {
 
 export const getSummary = async (employeeID) => {
   const client = new Client()
-  const records = await client.getSummary(employeeID)
-  return records.data.data
+  return await client.getSummary(employeeID)
 }
 
 export const updatePassword = async (userID, newPassword) => {
