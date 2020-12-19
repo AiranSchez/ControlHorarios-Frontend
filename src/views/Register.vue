@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-grey-lighter min-h-screen flex justify-center bg-blue-300">
-    <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+  <div class="h-screen flex justify-center bg-gradient-to-r from-green-400 to-blue-500">
+    <div class="container h-full flex justify-center items-center">
       <RegisterForm/>
     </div>
   </div>

@@ -1,5 +1,6 @@
 <template>
   <div class="home flex flex-col min-h-screen">
+    <Header user=""/>
     <img src="../assets/Home-picture-1.jpg" alt="Main picture" />
     <div class="bg-white flex flex-col items-center justify-around pt-10 pb-10">
       <div class="font-bold text-xl pb-4 transform">
@@ -35,12 +36,14 @@
 </template>
 <script>
 import Members from '../components/MemberCard/Members/Members'
+import Header from '@/components/Header/Header'
 import Footer from '../components/Footer/Footer'
 
 export default {
   name: 'Home',
   components: {
     Members,
+    Header,
     Footer
   }
 }

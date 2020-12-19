@@ -26,7 +26,6 @@
           </div>
       </div>
       </aside>
-
     <section class="w-full p-4">
       <div class="p-4 text-md flex flex-col px-6 py-8 rounded shadow-xl h-screen" v-if= "type === 'Calendar'">
         <CustomCalendar class="pb-4" :key="holidayKey"/>
