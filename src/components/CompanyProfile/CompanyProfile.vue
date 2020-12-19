@@ -3,10 +3,10 @@
     <main class="flex w-full h-full">
     <aside class="w-80 bg-gray shadow-md hidden sm:block">
       <header class="w-full p-8 flex justify-evenly items-center bg-gray-900">
-        <img class="rounded-full bg-white w-10 h-10" src="https://cdn.shopify.com/shopifycloud/hatchful-web/assets/67cbe9b74baf7f893488c5fc426d31eb.png"  alt="employeeImage"/>
+        <img class="rounded-full bg-white w-12 h-12" src="https://cdn.shopify.com/shopifycloud/hatchful-web/assets/67cbe9b74baf7f893488c5fc426d31eb.png"  alt="employeeImage"/>
         <div class="text-white">{{ companyName }}</div>
     </header>
-      <div class="flex flex-col justify-between h-full p-4 bg-gray-800">
+      <div class="flex flex-col justify-between h-screen p-4 bg-gray-800">
         <div class="text-sm">
           <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type='Calendar'">
             <font-awesome-icon :icon="{ prefix: 'fas', iconName:'calendar-alt'}"/>
@@ -20,22 +20,22 @@
             <font-awesome-icon :icon="{ prefix: 'fas', iconName:'user-plus'}"/>
             Create Employee
           </div>
-          </div>
-          <div class="p-3 text-white bg-red-500 rounded cursor-pointer text-center justify-self-end text-sm">
+        </div>
+          <div class="p-3 text-white bg-red-500 rounded cursor-pointer text-center text-sm">
             <LogoutButton/>
           </div>
       </div>
       </aside>
 
     <section class="w-full p-4">
-      <div class="p-4 text-md flex flex-col" v-if= "type === 'Calendar'">
+      <div class="p-4 text-md flex flex-col px-6 py-8 rounded shadow-xl" v-if= "type === 'Calendar'">
         <CustomCalendar class="pb-4" :key="holidayKey"/>
         <IconButton class="self-center w-1/6" name="plus-circle" color="blue" @click.native="showInfo(true)"/>
         <VueTailwindModal :showing="info" @close="showInfo(false)" :showClose="true" :backgroundClose="true" class="bg-grey-200">
           <Calendar @addedHoliday="keyChanged"/>
         </VueTailwindModal>
       </div>
-      <div class="w-full h-full p-4 text-md" v-if= "type === 'Employees'">
+      <div class="w-full h-full p-4 text-md px-6 py-8 rounded shadow-xl" v-if= "type === 'Employees'">
         <EmployeesList/>
       </div>
       <div class="w-full h-full h-64 p-4 text-md" v-if= "type === 'CreateEmployee'">
