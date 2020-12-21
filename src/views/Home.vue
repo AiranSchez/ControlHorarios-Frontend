@@ -1,50 +1,33 @@
 <template>
-  <div class="home flex flex-col min-h-screen">
-    <Header user=""/>
-    <img src="../assets/Home-picture-1.jpg" alt="Main picture" />
-    <div class="bg-white flex flex-col items-center justify-around pt-10 pb-10">
-      <div class="font-bold text-xl pb-4 transform">
-        Controla tus horas totales
-      </div>
-      <div class="text-base flex flex-col items-center pb-4">
-        <div>Nuestra meta es lograr que cada día</div>
-        <div>sea más fácil para ti trabajar</div>
-      </div>
-      <img
-        src="../assets/Home-icon-1.png"
-        alt="Calendar icon"
-        class="w-20 h-20 shadow-2xl"
-      />
+  <div>
+    <div class="home flex flex-col min-h-screen leading-normal tracking-normal bg-gradient-to-r from-green-400 to-blue-500">
+      <Header class="text-black" user=""/>
+      <HomeHeader/>
+      <HomeInfo/>
+      <HomeDescription/>
+      <Members/>
+      <Footer/>
     </div>
-    <img src="../assets/Home-picture-2.jpg" alt="Calendar picture" />
-    <div class="bg-white flex flex-col items-center justify-around pt-10 pb-10">
-      <div class="font-bold text-xl pb-4">Organiza a tu equipo</div>
-      <div class="text-base flex flex-col items-center pb-4">
-        <div>Gestiona las vacaciones individuales</div>
-        <div>como nunca lo has hecho</div>
-      </div>
-      <img
-        src="../assets/Home-icon-2.png"
-        alt="Chronometer icon"
-        class="w-20 h-20"
-      />
-    </div>
-    <img src="../assets/Home-picture-3.jpg" alt="Meeting Picture" />
-    <Members/>
-    <Footer/>
   </div>
+
 </template>
 <script>
 import Members from '../components/MemberCard/Members/Members'
 import Header from '@/components/Header/Header'
 import Footer from '../components/Footer/Footer'
+import HomeInfo from '@/components/HomeComponents/HomeInfo/HomeInfo'
+import HomeHeader from '@/components/HomeComponents/HomeHeader/HomeHeader'
+import HomeDescription from '@/components/HomeComponents/HomeDescription/HomeDescription'
 
 export default {
   name: 'Home',
   components: {
     Members,
     Header,
-    Footer
+    Footer,
+    HomeInfo,
+    HomeHeader,
+    HomeDescription
   }
 }
 </script>
