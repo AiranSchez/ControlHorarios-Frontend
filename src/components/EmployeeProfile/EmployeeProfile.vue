@@ -29,7 +29,7 @@
       </aside>
       <section class="w-full h-full pt-4 px-4 pb-4">
         <div class="w-full h-full h-64 text-md" v-if= "type === 'Time tracking'">
-        <EmployeeHours class="p-2" :employeeID="employeeID"/>
+        <EmployeeHours class="p-2" :employeeID="employeeID" :key="rerender"/>
           <div class="w-full items-center justify-center">
             <div class="w-full px-2">
               <div class="bg-white shadow-xl rounded-lg md:flex">

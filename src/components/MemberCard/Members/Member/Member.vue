@@ -1,7 +1,7 @@
 <template>
-    <figure class="flex flex-row justify-evenly bg-gray-100 rounded-xl p-8 w-3/5 m-3 shadow-xl">
+    <figure class="flex justify-around items-center max-w-3xl h-52 bg-white m-4 rounded-md">
         <MemberAvatar :picture="pictureUrl"/>
-        <div class="text-left space-y-6">
+        <div class="text-left space-y-6 w-96">
           <MemberNameRol :name="memberName" :rol="memberRole"/>
           <Blockquote :value="memberQuote"/>
           <MemberSocialMedia/>
