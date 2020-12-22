@@ -1,4 +1,4 @@
-FROM node:15.4.0-alpine3.10 AS build
+FROM node:15.4.0 AS build
 WORKDIR /app
 COPY . /app
 RUN apt-get update && npm install && npm run build
