@@ -8,7 +8,7 @@
         <FormButton value="Log In" @isClicked="login"/>
     </div>
     <div class="flex justify-center flex-row items-center">
-      <div class="text-grey-dark text-sm">Join flipday today!  </div>
+      <div class="text-grey-dark text-sm">Join flipday today! </div>
       <div @click="redirect()" class="hover:no-underline underline cursor-pointer pl-0 text-blue-800 font-bold"> Sign up</div>
     </div>
   </div>
