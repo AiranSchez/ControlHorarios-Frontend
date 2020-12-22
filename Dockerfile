@@ -1,7 +1,7 @@
 FROM node:12.19.0 AS build
 WORKDIR /app
 COPY . /app
-RUN apt-get update && npm install && npm run build
+RUN apt-get update && npm install && npm run build-css && npm run build
 
 FROM nginx:1.19.3
 WORKDIR /app
