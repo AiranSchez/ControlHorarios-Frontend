@@ -10,7 +10,8 @@
     "test": "vue-cli-service test:unit --watch",
     "test:ci": "vue-cli-service test:unit",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build-css": "postcss ./src/styles/tailwind.source.css -o ./public/build/tailwind.css"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
@@ -23,8 +24,11 @@
     "dayjs": "^1.9.7",
     "postcss": "^7.0.35",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.1",
+    "v-calendar": "^2.1.2",
     "vue": "^2.6.11",
-    "vue-router": "^3.2.0"
+    "vue-router": "^3.2.0",
+    "vue-tailwind-modal": "^1.0.5",
+    "vue-toast-notification": "^0.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -54,7 +58,9 @@
     "eslint-plugin-vue": "^6.2.2",
     "stylelint": "^13.8.0",
     "stylelint-config-standard": "^20.0.0",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "postcss-cli": "^7.1.1",
+    "tailwindcss": "^1.6.2"
   },
   "jest": {
     "setupFilesAfterEnv": [

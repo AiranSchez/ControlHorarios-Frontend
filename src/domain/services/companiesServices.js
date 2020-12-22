@@ -19,3 +19,18 @@ export const updateEmployeeStatus = async (companyID, UserID, status) => {
   const client = new Client()
   return client.updateEmployeeStatus(companyID, UserID, status)
 }
+
+export const getHolidays = async (companyID) => {
+  const client = new Client()
+  return client.getHolidays(companyID)
+}
+
+export const setHolidays = async (companyID, dto) => {
+  const client = new Client()
+  return client.setHolidays(companyID, dto)
+}
+
+export const getCompanyData = async (companyID) => {
+  const client = new Client()
+  return client.getCompanyData(companyID)
+}

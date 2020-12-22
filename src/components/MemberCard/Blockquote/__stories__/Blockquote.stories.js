@@ -1,4 +1,4 @@
-import '../../../../styles/tailwind.css'
+import '../../../../styles/tailwind.source.css'
 import Blockquote from '@/components/MemberCard/Blockquote/Blockquote'
 
 export default {

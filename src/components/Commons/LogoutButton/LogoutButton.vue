@@ -6,9 +6,12 @@
 </template>
 
 <script>
+import Vue from 'vue'
+
 export default {
   methods: {
     logout () {
+      Vue.$toast.open('Logged out')
       localStorage.clear()
       this.$router.push('/login')
     }

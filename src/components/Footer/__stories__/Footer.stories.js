@@ -1,4 +1,4 @@
-import '../../../styles/tailwind.css'
+import '../../../styles/tailwind.source.css'
 import Footer from '@/components/Footer/Footer'
 export default {
   title: 'Footer',

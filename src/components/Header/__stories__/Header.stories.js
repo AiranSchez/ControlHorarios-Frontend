@@ -1,5 +1,5 @@
 import Header from '../Header'
-import '../../../styles/tailwind.css'
+import '../../../styles/tailwind.source.css'
 
 export default {
   title: 'Header',

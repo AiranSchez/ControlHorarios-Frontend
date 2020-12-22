@@ -1,8 +1,8 @@
 <template>
-<div class="flex justify-center">
-    <table class="w-full text-left bg-white">
+<div class="flex">
+  <table class="text-left bg-white w-full">
         <tbody v-for="employee in employeesList" v-bind:key="employee">
-            <EmployeeInfo :userID="employee.UserID" :firstName="employee.FirstName" :lastName="employee.LastName" :email="employee.User.Email" :isEnabled="employee.User.Status"/>
+            <EmployeeInfo :userID="employee.UserID" :employeeID="employee.EmployeeID" :firstName="employee.FirstName" :lastName="employee.LastName" :email="employee.User.Email" :isEnabled="employee.User.Status"/>
         </tbody>
     </table>
 </div>
@@ -26,7 +26,6 @@ export default {
     const companyID = localStorage.getItem('CompanyID')
     getEmployees(companyID).then(resp => {
       if (resp.status === 200) {
-        console.log(resp.data.data)
         this.employeesList = resp.data.data
       }
     })

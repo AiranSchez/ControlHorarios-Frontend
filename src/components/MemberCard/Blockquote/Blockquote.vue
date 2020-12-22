@@ -1,8 +1,8 @@
 <template>
   <div>
       <blockquote>
-            <p class="text-lg font-semibold">
-              {{value}}
+            <p class="font-medium text-gray-500 ">
+              "{{value}}"
             </p>
         </blockquote>
   </div>
