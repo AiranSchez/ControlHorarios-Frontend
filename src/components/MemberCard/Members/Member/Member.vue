@@ -1,10 +1,10 @@
 <template>
-    <figure class="flex justify-around items-center max-w-3xl h-52 bg-white m-4 rounded-md">
+    <figure class="flex justify-around items-center h-52 bg-white m-4 rounded-md w-1/3">
         <MemberAvatar :picture="pictureUrl"/>
-        <div class="text-left space-y-6 w-96">
+        <div class="text-left space-y-6 mx-10 w-96">
           <MemberNameRol :name="memberName" :rol="memberRole"/>
           <Blockquote :value="memberQuote"/>
-          <MemberSocialMedia/>
+          <MemberSocialMedia :twitter="twitter" :github="github" :linkedin="linkedin"/>
         </div>
     </figure>
 </template>
@@ -27,7 +27,10 @@ export default {
     pictureUrl: String,
     memberName: String,
     memberRole: String,
-    memberQuote: String
+    memberQuote: String,
+    twitter: String,
+    github: String,
+    linkedin: String
   }
 }
 </script>
