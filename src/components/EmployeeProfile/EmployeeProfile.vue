@@ -9,7 +9,7 @@
         </header>
         <div class="flex flex-col justify-between h-full p-4 bg-gray-800">
           <div class="text-sm">
-            <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type = 'Time tracking'">
+            <div class="bg-gray-900 text-white p-2 rounded mt-2 cursor-pointer hover:bg-gray-700 hover:text-blue-300" @click="type = 'TimeTracking'">
               <font-awesome-icon :icon="{ prefix: 'fas', iconName:'clock'}"/>
               Time tracking
             </div>
@@ -28,7 +28,7 @@
         </div>
       </aside>
       <section class="w-full h-full pt-4 px-4 pb-4">
-        <div class="w-full h-full h-64 text-md" v-if= "type === 'Time tracking'">
+        <div class="w-full h-full h-64 text-md" v-if= "type === 'TimeTracking'">
         <EmployeeHours class="p-2" :employeeID="employeeID" :key="rerender"/>
           <div class="w-full items-center justify-center">
             <div class="w-full px-2">
@@ -98,7 +98,7 @@ export default {
         description: ''
       },
       isCheckedIn: false,
-      type: 'Time tracking',
+      type: 'TimeTracking',
       currentSeconds: '',
       currentMinutes: '',
       currentHours: '',

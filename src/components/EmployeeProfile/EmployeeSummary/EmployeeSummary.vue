@@ -10,7 +10,7 @@
           <div class="table-cell">Total</div>
         </div>
       </div>
-      <div v-for="(formattedRecord, index) in formattedRecords.reverse()" :key="index" class="table-row-group text-center">
+      <div v-for="(formattedRecord, index) in formattedRecords" :key="index" class="table-row-group text-center">
         <EmployeeRecord
             :description="formattedRecord.record.Description"
             :startTime="formattedRecord.record.StartTime"
@@ -47,6 +47,7 @@ export default {
       }
       this.formattedRecords.push(formattedRecord)
     }
+    this.formattedRecords = this.formattedRecords.reverse()
   },
   data () {
     return {

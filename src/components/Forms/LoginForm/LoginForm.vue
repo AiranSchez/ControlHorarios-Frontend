@@ -52,9 +52,9 @@ export default {
             localStorage.setItem('CompanyID', resp.data.SecondaryID)
             localStorage.setItem('UserID', resp.data.UserID)
           } else {
+            this.$router.push(`/employee/profile/${resp.data.SecondaryID}`)
             localStorage.setItem('EmployeeID', resp.data.SecondaryID)
             localStorage.setItem('UserID', resp.data.UserID)
-            this.$router.push(`/employee/profile/${resp.data.SecondaryID}`)
           }
         }
       }).catch(() => {
